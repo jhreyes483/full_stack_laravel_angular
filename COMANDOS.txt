@@ -1,0 +1,5 @@
+
+
+
+creacion de controller 
+php artisan make:controller PruebasController
