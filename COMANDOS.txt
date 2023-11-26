@@ -1,12 +1,13 @@
-
-
-
-creacion de controller 
+Creacion de controller 
 php artisan make:controller PruebasController
 
-creacion de modelos
+Creacion de modelos
 php artisan make:model Post
 php artisan make:model Category
 
-creacion de controllers
+Creacion de controllers
 php artisan make:controller UserController
+
+Comandos varios
+php artisan optimize 
+php artisan route:list
