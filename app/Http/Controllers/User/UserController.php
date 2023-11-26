@@ -4,12 +4,15 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Helpers\SessionAuth;
 
 
 class UserController extends Controller
 {
+
+    use SessionAuth;
+
     public function pruebas(Request $request)
     {
         return "accion de pruebas de USER-CONTROLLER";
@@ -63,9 +66,9 @@ class UserController extends Controller
     {
 
 
-        $JwtAuth    = new \App\Helpers\JwtAuth();
+       // $JwtAuth    = new \App\Helpers\JwtAuth();
 
-        $user       = $JwtAuth->getUserAuth($request);
+        $user     = $this->getUserAuth($request);
         $validate = $this->validateRequest($request, [
             'name'     => 'required|alpha',
             'surname'  => 'required|alpha',
@@ -99,35 +102,5 @@ class UserController extends Controller
 
 
 
-
-    public function validateRequest($request, $rules)
-    {
-        $error = false;
-        $msg    = 'ok';
-
-        $validator = Validator::make(
-            $request->all(),
-            $rules,
-            [
-                'required'    => "El campo ':attribute' es requerido.",
-                'required_if' => "El campo ':attribute' es requerido cuando el role_id es 26.",
-                'numeric'     => "El campo ':attribute' debe ser de tipo númerico.",
-                'date'        => "El campo ':attribute' debe ser de tipo fecha.",
-                'min'         => "El campo ':attribute' debe ser mayor o igual a :min.",
-                'date_format' => "El campo ':attribute' debe tener el formato YYYY-mm-dd.",
-                'in'          => "El valor de ':attribute' no es válido"
-            ]
-        );
-        if ($validator->fails()) {
-            $error  = true;
-            $msg    = array_values($validator->errors()->toArray())[0][0] ?? 'error request';
-        }
-
-        return compact('error', 'msg');
-    }
-
-
-    public function upload()
-    {
-    }
+ 
 }

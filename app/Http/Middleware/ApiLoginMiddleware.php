@@ -23,7 +23,7 @@ class ApiLoginMiddleware
             $data =  [
                 'status'=>'error',
                 'code'  => 400,
-                'msg'   => 'Usuario no esta autetnicado',
+                'msg'   => 'Usuario no esta autenticado',
             ];
             return response()->json($data, $data['code']);
         }

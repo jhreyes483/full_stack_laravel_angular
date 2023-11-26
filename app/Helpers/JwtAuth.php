@@ -85,4 +85,8 @@ class JwtAuth
         $token      = $request->header('Authorization');
         return JWT::decode($token, $this->key, ['HS256']);
     }
+
+    public function getKey(){
+        return $this->key;
+    }
 }
