@@ -13,7 +13,17 @@ class PostController extends Controller
     use SessionAuth;
     public function __construct()
     {
-        $this->middleware('auth-jwt', ['except' => ['index', 'show']]);
+        $this->middleware(
+            'auth-jwt', 
+            [
+                'except' => [
+                    'index', 
+                    'show',
+                    'getPostByCategory',
+                    'getPostByUser'
+                    ]
+                ]
+            );
     }
 
     public function index()
@@ -88,13 +98,35 @@ class PostController extends Controller
 
     public function update($id, Request $request)
     {
+        $error     = false;
         $validate  = $this->validateRequest($request, [
             'title'       => 'required',
             'content'     => 'required',
             'category_id' => 'required|int'
         ]);
-        if (!$validate['error']) {
-            $post = new Post;
+
+        if($validate['error']){
+            $error = true;
+            return [
+                'status' => 'error',
+                'code'   => 400,
+                'msg'    => $validate['msg']
+            ];
+        }
+
+        $user = $this->getUserAuth($request);
+        $post = Post::find($id);
+
+        if (!$error && ($post->user_id != $user->id)) {
+            $error = true;
+            $data  =  [
+                'status' => 'error',
+                'code'   => 400,
+                'msg'    => 'No tiene pormisos para edita este post, solo el autor puede'
+            ];
+        }
+
+        if (!$error) {
             $post->title       = $request->title;
             $post->content     = $request->content;
             $post->category_id = $request->category_id;
@@ -103,17 +135,11 @@ class PostController extends Controller
             $data = [
                 'code'   => 200,
                 'status' => 'success',
-                'msg'    => 'Guardo el post',
+                'msg'    => 'Edito el post',
                 'post'   =>  $post->load('category')
             ];
-        } else {
-
-            $data =  [
-                'status' => 'error',
-                'code'  => 400,
-                'msg'   => $validate['msg']
-            ];
         }
+
         return response()->json($data, $data['code']);
     }
 
@@ -123,10 +149,38 @@ class PostController extends Controller
         return "accion de pruebas de POST-CONTROLLER";
     }
 
-    public function destroy($id){
-   
-        $post = Post::find($id);
-        if(!empty(  $post )){
+    public function destroy($id, Request $request)
+    {
+
+        $post    = Post::find($id);
+        $user    = $this->getUserAuth($request);
+        $error   = false;
+
+        /*
+        $post = Post::where('id',$id)
+                    ->where('user_id', $user->id)
+                    ->first();
+        */
+
+        if (empty($post)) {
+            $error = true;
+            $data  =  [
+                'status' => 'error',
+                'code'   => 404,
+                'msg'    => 'El post no existe'
+            ];
+        }
+
+        if (!$error && ($post->user_id != $user->id)) {
+            $error = true;
+            $data  =  [
+                'status' => 'error',
+                'code'   => 400,
+                'msg'    => 'No tiene pormisos para eliminar este post, solo el autor puede'
+            ];
+        }
+
+        if (!$error) {
             $post->delete();
             $data = [
                 'code'   => 200,
@@ -134,14 +188,76 @@ class PostController extends Controller
                 'msg'    => 'Elimino el registro',
                 'post'   => $post
             ];
-        }else{
-            $data =  [
+        }
+        return response()->json($data, $data['code']);
+    }
+
+
+    public function upload(Request $request)
+    {
+        $validate = $this->validateRequest($request, [
+            'file0'   => 'required|image|mimes:png,jpg,jpeg,gif',
+        ]);
+
+        if ($validate['error']) {
+            return [
                 'status' => 'error',
-                'code'  => 404,
-                'msg'   => 'El post no existe'
+                'code'  => 400,
+                'msg'   => $validate['msg'],
             ];
         }
-     
+
+        $image = $request->file('file0');
+
+        if($image){
+            $image_name = time().$image->getClientOriginalName();
+            \Storage::disk('images')->put($image_name, \File::get($image));
+
+            $data = [
+                'image'  => $image_name,
+                'status' => 'success',
+                'code'   => 200
+            ];
+        }else{
+            $data = [
+                'code'   => 400,
+                'status' => 'error',
+                'msg'    => 'Error al subir imagen'
+            ];
+        }
         return response()->json($data, $data['code']);
+    }
+
+    public function getImage($filename){
+        $isset = \Storage::disk('images')->exists($filename);
+        if($isset){
+            $file = \Storage::disk('images')->get($filename);
+            return new Response($file, 200);
+        }else{
+            $data = [
+                'code'   => 404,
+                'status' => 'error',
+                'msg'    => 'La imagen no existe'
+            ];
+            return response()->json($data, $data['code']);
+        }
+    }
+
+    public function getPostByCategory($id){
+        $posts = Post::where('category_id', $id)->get();
+        return  response()->json( [
+            'status' => 'success',
+            'code'   => 200,
+            'posts'  => $posts
+        ], 200 );
+    }
+
+    public function getPostByUser($id){
+        $posts  = Post::where('user_id', $id)->get();
+        return  response()->json( [
+            'status' => 'success',
+            'code'   => 200,
+            'posts'  => $posts
+        ], 200 );
     }
 }

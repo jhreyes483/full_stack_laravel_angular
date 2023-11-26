@@ -67,3 +67,8 @@ Route::resource('api/category', 'App\Http\Controllers\Category\CategoryControlle
 
 // genera todas las rutas automaticas post
 Route::resource('api/post', 'App\Http\Controllers\Post\PostController');
+
+Route::post('api/post/upload', 'App\Http\Controllers\Post\PostController@upload');
+Route::get('api/post/image/{filename}', 'App\Http\Controllers\Post\PostController@getImage');
+Route::get('api/post/category/{id}', 'App\Http\Controllers\Post\PostController@getPostByCategory');
+Route::get('api/post/user/{id}', 'App\Http\Controllers\Post\PostController@getPostByUser');

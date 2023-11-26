@@ -130,9 +130,6 @@ class UserController extends Controller
                 'msg'    => 'Error al subir imagen'
             ];
         }
-
-
-
         return response()->json($data, $data['code']);
     }
 
