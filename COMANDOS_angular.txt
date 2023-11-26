@@ -40,4 +40,9 @@ angular-file-uploader: permite subir archvos al serve
 
 "instalacion de librerias y confuguracion de las mismas en angular.json y package.json"
 
+"creacion de componente login
+coman
+ng g component components/login
+"
+
 
