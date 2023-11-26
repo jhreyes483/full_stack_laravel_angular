@@ -7,3 +7,6 @@ php artisan make:controller PruebasController
 creacion de modelos
 php artisan make:model Post
 php artisan make:model Category
+
+creacion de controllers
+php artisan make:controller UserController

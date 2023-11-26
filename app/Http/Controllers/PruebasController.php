@@ -9,13 +9,11 @@ use App\Models\Category;
 class PruebasController extends Controller
 {
 
-
     public function index(){
         $animales = ['perro', 'gato', 'tigre'];
         $titulo = 'animales';
         return view('pruebas.index', compact('animales','titulo'));
     }
-
 
     public function testOrm(){
         $categories = Category::all();
