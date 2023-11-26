@@ -30,7 +30,7 @@ class JwtAuth
 
         if (is_object($user)) {
             $token = [
-                'sub'     => $user->id,
+                'id'     => $user->id,
                 'email'   => $user->email,
                 'name'    => $user->name,
                 'surname' => $user->surname,
@@ -68,7 +68,7 @@ class JwtAuth
             //throw $th;
         }
 
-        if (!empty($decoded) && is_object($decoded) && isset($decoded->sub /* Esta gurdado el id del usuario dentr del token */)) {
+        if (!empty($decoded) && is_object($decoded) && isset($decoded->id /* Esta gurdado el id del usuario dentr del token */)) {
             $auth = true;
         } else {
             $auth = false;
@@ -78,5 +78,11 @@ class JwtAuth
             return $decoded;
         }
         return $auth;
+    }
+
+
+    public function getUserAuth($request){
+        $token      = $request->header('Authorization');
+        return JWT::decode($token, $this->key, ['HS256']);
     }
 }
