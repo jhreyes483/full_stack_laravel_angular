@@ -25,3 +25,5 @@ se crea el metodo signup
 "Se agrega validaciones de tipo imagen"
 
 "Se crea metodo getImage para renderizar"
+
+"Se agregan metodos category api rest full"
