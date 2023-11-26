@@ -27,3 +27,17 @@ ng new
 ejecutar el serve
 ng serve
 
+
+instalar depenedencias
+np, update --force
+
+-----------------------------
+Librerias 
+angular {
+angular-froala-wysiwyg: permite hacer un editor de texto dentro de la web
+angular-file-uploader: permite subir archvos al serve
+}
+
+"instalacion de librerias y confuguracion de las mismas en angular.json y package.json"
+
+
