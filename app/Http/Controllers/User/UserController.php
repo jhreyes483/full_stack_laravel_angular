@@ -102,6 +102,18 @@ class UserController extends Controller
 
     public function upload(Request $request)
     {
+        $validate = $this->validateRequest($request, [
+            'file0'   => 'required|image|mimes:png,jpg,jpeg,gif',
+        ]);
+
+        if ($validate['error']) {
+            return [
+                'status' => 'error',
+                'code'  => 404,
+                'msg'   => $validate['msg'],
+            ];
+        }
+
         $image = $request->file('file0');
 
         if($image){

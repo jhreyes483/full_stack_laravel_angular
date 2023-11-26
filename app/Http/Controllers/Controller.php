@@ -35,6 +35,6 @@ class Controller extends BaseController
             $error  = true;
             $msg    = array_values($validator->errors()->toArray())[0][0] ?? 'error request';
         }
-        return compact('error', 'msg');
+              return compact('error', 'msg');
     }
 }
