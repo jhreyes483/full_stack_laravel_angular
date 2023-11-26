@@ -62,5 +62,8 @@ Route::group(['prefix' => '/api/user', 'middleware' => ['auth-jwt']], function (
 Route::get('api/user/avatar/{filename}', 'App\Http\Controllers\User\UserController@detail');
 
 
-// genera todas las rutas automaticas
+// genera todas las rutas automaticas category 
 Route::resource('api/category', 'App\Http\Controllers\Category\CategoryController');
+
+// genera todas las rutas automaticas post
+Route::resource('api/post', 'App\Http\Controllers\Post\PostController');
