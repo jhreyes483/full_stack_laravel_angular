@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\User;
 use App\Helpers\SessionAuth;
 
@@ -64,9 +65,6 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-
-
-       // $JwtAuth    = new \App\Helpers\JwtAuth();
 
         $user     = $this->getUserAuth($request);
         $validate = $this->validateRequest($request, [
@@ -138,5 +136,20 @@ class UserController extends Controller
         return response()->json($data, $data['code']);
     }
 
+
+    public function getImage($filename){
+        $isset = \Storage::disk('users')->exists($filename);
+        if($isset){
+            $file = \Storage::disk('users')->get($filename);
+            return new Response($file, 200);
+        }else{
+            $data = [
+                'code'   => 404,
+                'status' => 'error',
+                'msg'    => 'La imagen no existe'
+            ];
+            return response()->json($data, $data['code']);
+        }
+    }
  
 }

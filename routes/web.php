@@ -59,6 +59,7 @@ Route::middleware([/*'auth:api'*/  'auth-jwt'])->group(function () {
 Route::put('/api/user/update', 'App\Http\Controllers\User\UserController@update');
 Route::post('api/user/upload', 'App\Http\Controllers\User\UserController@upload');
 });
+Route::get('api/user/avatar/{filename}', 'App\Http\Controllers\User\UserController@getImage');
 
 
 

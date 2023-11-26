@@ -23,3 +23,5 @@ se crea el metodo signup
 "Se agrega metodo para subir imagen y configuraciones de disk"
 
 "Se agrega validaciones de tipo imagen"
+
+"Se crea metodo getImage para renderizar"
