@@ -30,3 +30,4 @@ Route::get('/pruebas2/{nombre?}', function ($nombre=null) {
 });
 
 Route::get('/animales','App\Http\Controllers\PruebasController@index');
+Route::get('/test-orm','App\Http\Controllers\PruebasController@testOrm');
