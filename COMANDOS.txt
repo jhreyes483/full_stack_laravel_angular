@@ -27,3 +27,5 @@ se crea el metodo signup
 "Se crea metodo getImage para renderizar"
 
 "Se agregan metodos category api rest full"
+
+"CORS permite peticiones de dominios distintos"
