@@ -1,5 +1,5 @@
 requisitos{
-node js, 
+node js "version 20 en adelante", 
 } 
 
 
@@ -20,4 +20,10 @@ npm cache clean --force
 
 INSTALAR ANGULAR
 npm install -g @angular/cli
+
+crear proyecto de angular
+ng new
+
+ejecutar el serve
+ng serve
 
