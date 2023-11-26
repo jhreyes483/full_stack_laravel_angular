@@ -1,13 +1,13 @@
-Creacion de controller 
+
+
+
+creacion de controller 
 php artisan make:controller PruebasController
 
-Creacion de modelos
+creacion de modelos
 php artisan make:model Post
 php artisan make:model Category
 
-Creacion de controllers
-php artisan make:controller UserController
-
-Comandos varios
-php artisan optimize 
-php artisan route:list
+"INSTALACION DE WEB TOKEN
+se agrega en el require de composer.json    "firebase/php-jwt":"3.0.0"
+"
