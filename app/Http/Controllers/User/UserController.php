@@ -37,7 +37,7 @@ class UserController extends Controller
             ];
         }
 
-        $password = password_hash($request->password, PASSWORD_BCRYPT, ['cost' =>4]);
+        $password = md5($request->password);
         $user     = new User;
 
         $user->name     = $request->name;
@@ -52,7 +52,24 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
-        return "Accion login";
+        $JwtAuth = new \App\Helpers\JwtAuth();
+        $email = 'victor@victor.com';
+        $password = md5('password');
+        return $JwtAuth->signup( $request->email, md5($request->password) ,0);
+    }
+
+    public function update(Request $request){
+        $JwtAuth    = new \App\Helpers\JwtAuth();
+        $token      = $request->header('Authorization');
+        $checkToken = $JwtAuth->checkToken($token);
+
+        if($checkToken){
+            echo '<h1>Login correcto</h1>';
+        }else{
+            echo '<h1>Login incorrecto</h1>';
+        }
+        die();
+
     }
 
 

@@ -54,6 +54,7 @@ DELETE: Eliminar datos o recursos
 
 Route::post('/api/register', 'App\Http\Controllers\User\UserController@register');
 Route::post('/api/login', 'App\Http\Controllers\User\UserController@login');
+Route::post('/api/update', 'App\Http\Controllers\User\UserController@update');
 
 
 

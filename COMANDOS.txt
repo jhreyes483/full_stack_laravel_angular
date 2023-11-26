@@ -11,3 +11,11 @@ php artisan make:model Category
 "INSTALACION DE WEB TOKEN
 se agrega en el require de composer.json    "firebase/php-jwt":"3.0.0"
 "
+"Configuracion de token login
+
+php artisan make:provider JwtAuthServiceProvider
+
+se crea y agrega el provider
+
+se crea el metodo signup
+"
