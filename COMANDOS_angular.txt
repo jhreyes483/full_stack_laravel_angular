@@ -49,4 +49,6 @@ ng g component components/login
 
 "configuracion de componente rester"
 
+"configuracion inicial de routes""configuracion inicial de routes"
+
 
