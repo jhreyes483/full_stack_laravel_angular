@@ -1,5 +1,6 @@
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { Routes } from '@angular/router';
+
+
 
 //IMPORSTAR COMPONENTES
 import { LoginComponent } from './components/login/login.component';
@@ -14,10 +15,6 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-        path: 'inicio',
-        component: LoginComponent
-    },
-    {
         path: 'login',
         component: LoginComponent
     },
@@ -26,7 +23,7 @@ export const routes: Routes = [
         component: RegisterComponent
     },
     {
-        path: 'home',
+        path: 'inicio',
         component: HomeComponent
     },
 
@@ -37,11 +34,3 @@ export const routes: Routes = [
         component: ErrorComponent
     }
 ];
-
-@NgModule({
-    declarations: [],
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-})
-// EXPORTAR CONFIGURACION
-export class AppRoutingModule {}
