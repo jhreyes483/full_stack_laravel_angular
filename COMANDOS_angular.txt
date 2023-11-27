@@ -56,4 +56,6 @@ ng g component components/login
 
 "se muestran los datos capturados de form por consola y se agrega validacion de email"
 
+"se grega disabled para el boton de envio formulario segun validaciones"
+
 
