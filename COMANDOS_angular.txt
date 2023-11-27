@@ -1,7 +1,8 @@
 requisitos{
 node js "version 20 en adelante", 
 } 
-
+actualizaciones de angular 7 
+https://www.youtube.com/watch?v=RK_ZPKn_I3I
 
 actualizar npm 
 npm install -g npm@latest
@@ -44,5 +45,7 @@ angular-file-uploader: permite subir archvos al serve
 coman
 ng g component components/login
 "
+
+"pasos para generar un componente y llamarlo desde el principal"
 
 
