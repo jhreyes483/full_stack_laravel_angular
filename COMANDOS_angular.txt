@@ -6,6 +6,7 @@ https://www.youtube.com/watch?v=RK_ZPKn_I3I
 
 Example
 // https://github.com/ganatan/angular-app/tree/master
+// https://github.com/pedrovelasquez9
 
 
 actualizar npm 
@@ -57,5 +58,9 @@ ng g component components/login
 "se muestran los datos capturados de form por consola y se agrega validacion de email"
 
 "se grega disabled para el boton de envio formulario segun validaciones"
+
+"crear un servicio
+ ng g service services/user/user
+"
 
 

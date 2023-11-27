@@ -33,6 +33,7 @@
 
             required pattern="[a-zA-Z]+"
             type="text" name="surname" class="form-control" >
+            {{ user.surname }}
             <small 
             *ngIf="!surname.valid && surname.touched"
             class="invalid-feedback d-block">
