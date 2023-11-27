@@ -51,4 +51,6 @@ ng g component components/login
 
 "configuracion inicial de routes""configuracion inicial de routes"
 
+"configuracion de pagina no encontrada"
+
 

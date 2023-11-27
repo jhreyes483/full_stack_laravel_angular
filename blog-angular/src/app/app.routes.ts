@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 //IMPORSTAR COMPONENTES
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { ErrorComponent } from './components/error/error.component';
 
 // DEFINIR RUTAS
 export const routes: Routes = [
@@ -22,6 +24,17 @@ export const routes: Routes = [
     {
         path: 'registro',
         component: RegisterComponent
+    },
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+
+
+    {
+        // deve ser la final
+        path: '**',
+        component: ErrorComponent
     }
 ];
 
