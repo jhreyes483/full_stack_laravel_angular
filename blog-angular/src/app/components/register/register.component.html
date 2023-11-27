@@ -6,7 +6,7 @@
 
     <!-- formulario de registro -->
     <form class="col-md-5 ml-0 pl-0"
-    #registerForm="ngForm" (onSubmit)="onSubmit(registerForm)"
+    #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)"
     >
         <div class="form-group">
             <label for="name">Nombre</label>
@@ -45,7 +45,7 @@
             <input 
             #email="ngModel" [(ngModel)] ="user.email"
  
-            required
+            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             type="email" name="email" class="form-control">
             <small 
             *ngIf="!email.valid && email.touched"

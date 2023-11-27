@@ -52,4 +52,8 @@ ng g component components/login
 
 "configuracion de componente rester"
 
+"se crean validaciones iniciales de formulario"
+
+"se muestran los datos capturados de form por consola y se agrega validacion de email"
+
 

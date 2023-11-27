@@ -20,8 +20,8 @@ export class RegisterComponent {
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
   }
 
-  onSubmit( form :any){
-    console.log('funcion onSubmit')
+  onSubmit(form :any){
+    console.log('funcion onSubmit', this.user)
   }
 
 }
