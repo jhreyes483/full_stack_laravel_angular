@@ -43,3 +43,7 @@ Se instala en larabel composer require fruitcake/laravel-cors"
 borrar storage
 carga automatica
 "
+
+"creacion de compomnente user-edit
+ng g component components/user-edit
+"
