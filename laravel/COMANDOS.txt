@@ -38,3 +38,8 @@ Se instala en larabel composer require fruitcake/laravel-cors"
 "persistir datos usuario identificado"
 
 "se extrae datos de usario desde el localStorage"
+
+"se crea cerror session
+borrar storage
+carga automatica
+"

@@ -54,11 +54,14 @@ export class LoginComponent implements OnInit{
         // persistir datos usuario identificado
         if(this.token) localStorage.setItem('token', this.token);
         localStorage.setItem('identity',JSON.stringify(this.identity));
+        console.log('Login_correcto')
+        
         if( !localStorage.getItem('token') ){
           this.status = 'error';
         }else{
           this.status = 'success';
-          console.log('Login_correcto')
+          this._router.navigate(['inicio']);
+  
         }
       } else {
         this.clearStorage();
