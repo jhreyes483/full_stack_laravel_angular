@@ -63,4 +63,6 @@ ng g component components/login
  ng g service services/user/user
 "
 
+"se crea login de usario"
+
 

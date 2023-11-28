@@ -39,58 +39,37 @@ export class UserService {
 
 
   async register(user : any){
-    var options ={
+  var options ={
       method: 'POST',
-      body: {
+      body: JSON.stringify({
         email: user.email,
         name: user.name,
         surname: user.surname,
         password: user.password
-      },
+      }),
       headers: this.headers
     }
     const data = await fetch(this.base_url+'api/register', options); 
     return await data.json()??[];
   }
 
-  
-  operatingSystems: User[] = [
-    {
-      id:1,
-      name: 'Pedro',
-      surname: 'Daza',
-      role: 'ROLE_ADMIN',
-      email: 'pedro@gmial.com',
-      password: 'password',
-      description: 'nada',
-      image: 'fsda.jpg'
-    },
-    {
-      id:2,
-      name: 'Javier',
-      surname: 'Neira',
-      role: 'ROLE_ADMIN',
-      email: 'javier@gmial.com',
-      password: 'password',
-      description: 'nada',
-      image: 'fsda.jpg'
-    },
-    {
-      id:1,
-      name: 'Maria',
-      surname: 'Neira',
-      role: 'ROLE_ADMIN',
-      email: 'maria@gmial.com',
-      password: 'password',
-      description: 'nada',
-      image: 'fsda.jpg'
+  async login(user : any){
+    var options ={
+      method: 'POST',
+      body: JSON.stringify({
+        email: user.email,
+        password: user.password
+      }),
+      headers: this.headers
     }
-  ];
-
-
-
-  getUsers(): User[]{
-    return this.operatingSystems;
+    const data = await fetch(this.base_url+'api/login', options); 
+    return await data.json()??[];
   }
 
+  
+  
+
+
+
+  
 }

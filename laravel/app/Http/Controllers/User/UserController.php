@@ -59,7 +59,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $JwtAuth = new \App\Helpers\JwtAuth();
-        return $JwtAuth->signup($request->email, md5($request->password), 0);
+        return $JwtAuth->signup($request->email, md5($request->password), 1);
     }
 
     public function update(Request $request)

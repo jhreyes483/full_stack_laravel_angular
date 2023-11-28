@@ -20,7 +20,7 @@ export class RegisterComponent {
   public status: string;
 
   userService: UserService = inject(UserService);
-  users: User[] = this.userService.getUsers();
+  users: User[] = [];
   form: any[] = [];
 
   constructor() {
@@ -41,17 +41,18 @@ export class RegisterComponent {
     }).catch(error => {
       this.status = 'error';
     });
-
+/*
     this.userService.getAll().then(response => {
 
       console.log('ok', response)
-      //console.log(response.userId)
 
     }).catch(error => {
 
       console.log('error', error)
 
     });
+
+    */
 
 
 
