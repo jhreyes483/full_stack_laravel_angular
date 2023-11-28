@@ -17,7 +17,12 @@ export class LoginComponent {
   public user: User;
   public status: string;
   public token: string;
-  public entity: {};
+  public identity: {
+    id:string,
+    name:string,
+    surname:string,
+    email:string
+  };
   userService: UserService = inject(UserService);
 
 
@@ -25,22 +30,26 @@ export class LoginComponent {
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
     this.status = 'error';
     this.token = '';
-    this.entity = {};
+    this.identity = {id:'',name:'',surname:'',email:''};
   }
 
   onSubmit(form: any) {
     this.userService.login(this.user).then(response => {
       if (response.status) {
-        this.status = 'success';
+        
 
-        this.token = response.token;
-        this.entity = {
-          id: response.id,
-          name: response.name,
-          surname: response.surname,
-          email: response.mail
+        this.token  = response.token;
+        this.identity = {id: response.id,name: response.name,surname: response.surname,email: response.mail}
+
+        // persistir datos usuario identificado
+        localStorage.setItem('token', this.token);
+        localStorage.setItem('identity',JSON.stringify(this.identity));
+        if( !localStorage.getItem('token') ){
+          this.status = 'error';
+        }else{
+          this.status = 'success';
+          console.log('Login_correoto')
         }
-
       } else {
         this.status = 'error';
       }

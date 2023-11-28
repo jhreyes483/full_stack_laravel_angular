@@ -3,6 +3,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { UserService } from './services/user/user.service';
 
 
 
@@ -10,14 +11,23 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
   ],
-  providers:[],
+  providers: [UserService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Blog-Angular';
+  public title = 'Blog-Angular';
+  public token;
+  public identity;
+
+  constructor(
+    public _userService: UserService
+  ) {
+      this.identity = this._userService.getIdentity();
+      this.token = this._userService.getToken();
+  }
 }

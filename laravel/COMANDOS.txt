@@ -34,3 +34,7 @@ se crea el metodo signup
 se agrega el arcvo de proxy en angular
 ng serve --proxy-config proxy.conf.json
 Se instala en larabel composer require fruitcake/laravel-cors"
+
+"persistir datos usuario identificado"
+
+"se extrae datos de usario desde el localStorage"
