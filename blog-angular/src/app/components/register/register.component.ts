@@ -1,4 +1,4 @@
-import { Component , inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../../models/user';
@@ -16,17 +16,27 @@ import { UserService } from '../../services/user/user.service';
 export class RegisterComponent {
   page_title: string = 'Registrate';
   public user: User;
-  userService: UserService = inject( UserService);
+  userService: UserService = inject(UserService);
   users: User[] = this.userService.getUsers();
-  form :any[]=[];
+  form: any[] = [];
 
   constructor() {
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
   }
 
-  onSubmit(form :any){
-    console.log('funcion onSubmit', this.user);
-    console.log('users', this.users);
+  onSubmit(form: any) {
+
+    this.userService.getAll().then(response => {
+
+      console.log('ok', response)
+      //console.log(response.userId)
+
+    }).catch(error => {
+
+      console.log('error', error)
+
+    });
+
     form.reset();
 
   }

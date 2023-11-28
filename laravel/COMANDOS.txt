@@ -29,3 +29,6 @@ se crea el metodo signup
 "Se agregan metodos category api rest full"
 
 "CORS permite peticiones de dominios distintos"
+
+"Configuraciones para cors y metodo fetch para peticiones
+Se instala en larabel composer require fruitcake/laravel-cors"
