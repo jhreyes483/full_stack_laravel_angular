@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit{
         
 
         this.token  = response.token;
-        this.identity = {id: response.id,name: response.name,surname: response.surname,email: response.mail}
+        this.identity = {id: response.id,name: response.name,surname: response.surname,email: response.email}
         this._router.navigate(['inicio'])
         // persistir datos usuario identificado
         if(this.token) localStorage.setItem('token', this.token);

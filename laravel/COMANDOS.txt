@@ -47,3 +47,5 @@ carga automatica
 "creacion de compomnente user-edit
 ng g component components/user-edit
 "
+
+"html inicial de edit-user"

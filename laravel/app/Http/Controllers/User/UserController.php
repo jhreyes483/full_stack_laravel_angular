@@ -66,14 +66,14 @@ class UserController extends Controller
     {
 
         $user     = $this->getUserAuth($request);
-        $validate = $this->validateRequest($request, [
-            'name'     => 'required|alpha',
-            'surname'  => 'required|alpha',
-            //'email'    => 'required|email|unique:users'
+               $validate = $this->validateRequest($request, [
+            'name'        => 'required|alpha',
+            'surname'     => 'required|alpha',
+            'email'       => 'required'
         ]);
 
         if ($validate['error']) {
-            $data =  [
+            return  [
                 'status' => 'error',
                 'code'  => 404,
                 'msg'   => $validate['msg'],
@@ -83,7 +83,8 @@ class UserController extends Controller
         $user           = User::find($user->id);
         $user->name     = $request->name;
         $user->surname  = $request->surname;
-        // $user->email    = $request->email;
+        $user->description = $request->description?? $user->description;
+        $user->email    = $request->email;
         $user->save();
 
         $data =  [

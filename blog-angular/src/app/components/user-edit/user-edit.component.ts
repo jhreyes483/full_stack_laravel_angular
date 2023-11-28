@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../../models/user';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
   imports: [CommonModule, FormsModule,  ReactiveFormsModule],
+  providers:[UserService],
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.css'
 })
@@ -14,16 +16,55 @@ export class UserEditComponent {
   public page_title :string;
   public status : string;
   public user : User;
+  public identity : {
+    id:number,
+    name: string,
+    surname: string,
+    email:string
+  };
+  public token : string | null;
 
-
-  constructor(){
+  constructor(
+    private _userServices : UserService
+  ){
     this.page_title = 'Ajustes';
     this.status = '';
+    this.identity = this._userServices.getIdentity();
+    this.token = this._userServices.getToken();
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
+
+
+    if(this.identity){
+      this.user = new User(
+        this.identity.id??'', 
+        this.identity.name??'',  
+        this.identity.surname??'', 
+        'ROLE_USER',
+         this.identity.email??'', 
+         '',
+        this.user.description,
+        ''
+        );
+    }
   }
 
   onSubmit(form : any){
-    
+
+    this._userServices.update(this.user).then(response => {
+      console.log('ok', response)
+        if(response.status == 'success'){
+          this.status = 'success';
+          if(this.user){
+            // actualiza usuario en session
+            this.identity = this.user;
+            localStorage.setItem('identity', JSON.stringify(this.identity))
+          }
+        }else{
+          this.status = 'error';
+        }
+    }).catch(error => {
+      this.status = 'error';
+    });
   }
 
 }
