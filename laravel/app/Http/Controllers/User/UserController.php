@@ -22,7 +22,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $data =  [
-            'status' => 'succcess',
+            'status' => 'success',
             'code'  => 200,
             'msg'   => 'El usuario se ha creado correctamente'
         ];
@@ -33,9 +33,8 @@ class UserController extends Controller
             'email'    => 'required|email|unique:users',
             'password' => 'required'
         ]);
-
         if ($validate['error']) {
-            $data =  [
+            return  [
                 'status' => 'error',
                 'code'  => 404,
                 'msg'   => $validate['msg'],
