@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 // DEFINIR RUTAS
 export const routes: Routes = [
@@ -30,7 +31,13 @@ export const routes: Routes = [
         path: 'inicio',
         component: HomeComponent
     },
- 
+    {
+        path: 'ajustes',
+        component: UserEditComponent 
+    },
+
+
+
 
     {
         // debe ser la final
