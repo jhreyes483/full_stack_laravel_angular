@@ -1,6 +1,6 @@
 // https://github.com/ganatan/angular-app/tree/master
 
-import { Component } from '@angular/core';
+import { Component , OnInit, DoCheck} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserService } from './services/user/user.service';
@@ -19,15 +19,26 @@ import { UserService } from './services/user/user.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, DoCheck {
   public title = 'Blog-Angular';
-  public token;
-  public identity;
+  public token : any;
+  public identity : any;
 
   constructor(
     public _userService: UserService
   ) {
-      this.identity = this._userService.getIdentity();
-      this.token = this._userService.getToken();
+    this.loadUser();
+  }
+
+  ngOnInit(): void {
+    this.loadUser();
+  }
+  ngDoCheck(): void {
+    this.loadUser();
+  }
+
+  loadUser(){
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();
   }
 }

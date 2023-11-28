@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {Router, ActivatedRoute, Params} from '@angular/router'; // para parmetros por url
 
 @Component({
   selector: 'app-login',
@@ -12,18 +14,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './login.component.css',
   providers: [UserService]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   page_title: string = "Login"
   public user: User;
   public status: string;
-  public token: string;
-  public identity: {
+  public token: string | null;
+    public identity: {
     id:string,
     name:string,
     surname:string,
     email:string
   };
-  userService: UserService = inject(UserService);
+
+  userService: UserService  = inject(UserService);
+  _router: Router           = inject(Router);
+  _route : ActivatedRoute   = inject(ActivatedRoute);
 
 
   constructor() {
@@ -33,29 +38,60 @@ export class LoginComponent {
     this.identity = {id:'',name:'',surname:'',email:''};
   }
 
+  ngOnInit(): void {
+    // Se ejecuta siempre y cierra sesion solo cuando le llega el parametro sure por la url
+    this.loguot();
+  }
+
   onSubmit(form: any) {
     this.userService.login(this.user).then(response => {
-      if (response.status) {
+      if (response.status && response.status != 'error' ) {
         
 
         this.token  = response.token;
         this.identity = {id: response.id,name: response.name,surname: response.surname,email: response.mail}
-
+        this._router.navigate(['inicio'])
         // persistir datos usuario identificado
-        localStorage.setItem('token', this.token);
+        if(this.token) localStorage.setItem('token', this.token);
         localStorage.setItem('identity',JSON.stringify(this.identity));
         if( !localStorage.getItem('token') ){
           this.status = 'error';
         }else{
           this.status = 'success';
-          console.log('Login_correoto')
+          console.log('Login_correcto')
         }
       } else {
+        this.clearStorage();
         this.status = 'error';
       }
+      if(this.status == 'error'){
+        this.clearStorage();
+        console.log('clear')
+      }
+
+
     }).catch(error => {
       this.status = 'error';
     });
   }
+
+  loguot(){
+      this._route.params.subscribe(params=>{
+        let loguot = +params['sure'];
+        if(loguot == 1){
+          this.clearStorage()
+        }
+      })
+  }
+
+  clearStorage(){
+    localStorage.removeItem('identity')
+    localStorage.removeItem('token')
+    this.identity = {id:'',name:'',surname:'',email:''};
+    this.token = null;
+    console.log('storage clear');
+  }
+
+
 
 }

@@ -102,6 +102,7 @@ export class UserService {
       if (json && json != "undefined") {
         this.identity = JSON.parse(json)
       } else {
+        this.identity = { id: '', name: '', surname: '', email: '' };
         console.log('storage not 2')
       }
     }

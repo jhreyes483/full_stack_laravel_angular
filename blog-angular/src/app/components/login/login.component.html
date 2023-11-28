@@ -2,13 +2,17 @@
     <h1>{{page_title}}</h1>
     <p>Identificate en la plataforma para comenzar!!</p>
 
-    <div class="alert alert-success col-md-5 mt-3" 
-    *ngIf="status == 'success'">
-        Bienivendo
+    <div *ngIf="status">
+        <div class="alert alert-success col-md-5 mt-3" 
+        *ngIf="status == 'success'">
+            Bienivendo
+        </div>
+        <div *ngIf="status == 'error'" 
+        class="alert alert-danger col-md-5 mt-3" >
+            Credenciales incorrectas
+        </div>
     </div>
-    <div class="alert alert-danger" *ngIf="status == 'error'">
-        Credenciales incorrectas
-    </div>
+
 
 
 

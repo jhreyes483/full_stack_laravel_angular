@@ -19,6 +19,10 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
+        path: 'logout/:sure',
+        component: LoginComponent
+    },
+    {
         path: 'registro',
         component: RegisterComponent
     },
@@ -26,10 +30,10 @@ export const routes: Routes = [
         path: 'inicio',
         component: HomeComponent
     },
-
+ 
 
     {
-        // deve ser la final
+        // debe ser la final
         path: '**',
         component: ErrorComponent
     }
