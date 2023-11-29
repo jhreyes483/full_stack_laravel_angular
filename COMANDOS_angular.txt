@@ -75,4 +75,13 @@ ng g component components/category-new
 
 "bucle *ngFor uso para iterar categorias"
 
+"se crea componente post
+ng g c components/post-new
+"
+
+"instalacion de edditor enriquesido
+https://github.com/kolkov/angular-editor
+npm install @kolkov/angular-editor --save
+"
+
 

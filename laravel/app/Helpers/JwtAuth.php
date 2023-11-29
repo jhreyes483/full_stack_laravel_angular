@@ -46,6 +46,7 @@ class JwtAuth
                 $data['email']   = $user->email;
                 $data['id']      = $user->id;
                 $data['image']   = $user->image;
+                $data['description'] = $user->description;
             }
         } else {
             $data = [

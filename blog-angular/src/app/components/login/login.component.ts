@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit{
     this.isSubmit = false;
     this.status   = 'error';
     this.token    = '';
-    this.identity = {id:'',name:'',surname:'',email:'', image:''};
+    this.identity = _userService.getClearIdentity();
 
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
   }
@@ -41,17 +41,19 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit(form: any) {
+    this.status = '';
     this.isSubmit = true;
     this._userService.login(this.user).then(response => {
       if (response.status && response.status != 'error' ) {
-        
+        this.status = 'success';
         this.token    = response.token;
         this.identity = {
-          id:      response.id,
-          name:    response.name,
-          surname: response.surname,
-          email:   response.email,
-          image:   response.image
+          id:           response.id,
+          name:         response.name,
+          surname:      response.surname,
+          email:        response.email,
+          image:        response.image,
+          description : response.description
         }
         this._router.navigate(['inicio'])
         // persistir datos usuario identificado
@@ -60,7 +62,7 @@ export class LoginComponent implements OnInit{
         console.log('Login_correcto')
         
         if( !localStorage.getItem('token') ){
-          this.status = 'error';
+         // this.status = 'error';
         }else{
           this.status = 'success';
           this._router.navigate(['inicio']);
@@ -77,7 +79,7 @@ export class LoginComponent implements OnInit{
 
 
     }).catch(error => {
-      this.status = 'error';
+     // this.status = 'error';
     });
   }
 
@@ -93,7 +95,7 @@ export class LoginComponent implements OnInit{
   clearStorage(){
     localStorage.removeItem('identity')
     localStorage.removeItem('token')
-    this.identity = {id:'',name:'',surname:'',email:''};
+    this.identity = this._userService.getClearIdentity();
     this.token = null;
     console.log('storage clear');
   }

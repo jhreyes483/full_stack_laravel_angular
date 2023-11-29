@@ -36,7 +36,6 @@ export class UserEditComponent {
   //  this.name_image = 'test_img';
    // this.uploadData = { name_image: '', status_change: false };
 
-
     if(this.identity){
       this.user = new User(
         this.identity.id??'', 
@@ -45,7 +44,7 @@ export class UserEditComponent {
         'ROLE_USER',
          this.identity.email??'', 
          '',
-        this.user.description,
+        this.identity.description,
         ''
         );
     }
@@ -70,9 +69,11 @@ export class UserEditComponent {
       console.log('ok', response)
         if(response.status == 'success'){
           this.status = 'success';
+          console.log(this.identity,'thisuser');
           if(this.user){
             // actualiza usuario en session
             this.identity = this.user;
+            console.log(this.identity,'enttt');
             localStorage.setItem('identity', JSON.stringify(this.identity))
           }
         }else{

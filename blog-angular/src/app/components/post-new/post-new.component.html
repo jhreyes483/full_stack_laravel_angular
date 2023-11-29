@@ -1,0 +1,55 @@
+<div class="col-md-12 mt-3">
+    <h1>{{ page_title }}</h1>
+
+    <!-- nemsaje de alerta -->
+
+    <!-- Formulario de crear entrada -->
+    <form class="col-md-5 ml-0 pl-0" 
+    #postNew="ngForm" (ngSubmit)= "onSubmit(postNew)">
+        <div class="form-group">
+            <label for="title">Titulo</label>
+            <input type="text"  name ="title" class="form-control" required
+            #title="ngModel" [(ngModel)] = "post.title">
+            <small *ngIf="!title.valid && title.touched"
+            class="invalid-feedback d-block"
+            >
+            El titulo no es valido
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="title">Descripción</label>
+            <textarea class="form-control" #content ="ngModel" [(ngModel)] = "post.content" name="content" cols="30" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+      
+
+        </div>
+        <div class="form-group"></div>
+
+        <!-- 
+
+                    <angular-editor    formControlName="content" [config]="editorConfig">
+            <ng-template #customButtons let-executeCommandFn="executeCommandFn">
+              <ae-toolbar-set>
+               <textarea #content ="ngModel" [(ngModel)] = "post.content" name="content" cols="30" rows="10">asdfds</textarea>
+              </ae-toolbar-set>
+            </ng-template>
+          </angular-editor>
+        -->
+     
+      
+         <!-- 
+         <textarea
+         formControlName="htmlContent"
+         [config]="editorConfig"
+         name="content" id="" cols="30" rows="10" class="form-control" >
+
+         </textarea>
+          -->
+        <input type="submit" value="enviar" class="btn btn-success" >
+    </form>
+
+    <hr>
+
+    
+</div>

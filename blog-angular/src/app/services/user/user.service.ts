@@ -29,7 +29,7 @@ export class UserService {
     this.method = 'POST'
     this.base_url = config.base_url;
     this.token = null;
-    this.identity = { id: '', name: '', surname: '', email: '' };
+    this.identity = this.getClearIdentity();
   }
 
 
@@ -117,12 +117,16 @@ export class UserService {
       if (json && json != "undefined") {
         this.identity = JSON.parse(json)
       } else {
-        this.identity = { id: 0, name: '', surname: '', email: '' };
+        this.identity = this.getClearIdentity();
         console.log('storage not 2')
       }
     }
     //console.log(this.identity,'storage_identity')
     return this.identity;
+  }
+  
+  getClearIdentity(){
+    return {id:'',name:'',surname:'',email:'', image:'',description:''};
   }
 
 

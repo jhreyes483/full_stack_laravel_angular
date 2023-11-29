@@ -14,12 +14,7 @@ export class CategoryService {
 
 
   public token: string | null;
-  public identity: {
-    id:any,
-    name:string,
-    surname:string,
-    email:string
-  };
+  public identity: any;
 
 
   constructor(
@@ -28,8 +23,8 @@ export class CategoryService {
 
         this.base_url = config.base_url;
         this.token    = null;
-        this.identity = { id: '', name: '', surname: '', email: '' };
-        this.headers = {
+        this.identity = _userService.getClearIdentity();
+        this.headers  = {
             'Content-Type': 'application/json',
             'Authorization': _userService.getToken(),
         }
