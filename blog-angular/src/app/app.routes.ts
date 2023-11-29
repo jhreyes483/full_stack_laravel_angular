@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { FileUploadComponent } from './components/utils/file-upload/file-upload.component';
+import { CategoryNewComponent } from './components/category-new/category-new.component';
 
 // DEFINIR RUTAS
 export const routes: Routes = [
@@ -40,6 +41,10 @@ export const routes: Routes = [
         // test
         path: 'file',
         component: FileUploadComponent 
+    },
+    {
+        path: 'crear-categoria',
+        component: CategoryNewComponent
     },
 
 

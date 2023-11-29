@@ -63,7 +63,8 @@
 
         </form>
         <div class="col-md-5 ml-0 pl-0">
-            <div *ngIf="identity && identity.image && identity.image != ''"> 
+            <div  class="avatar_mask_edit"
+             *ngIf="identity && identity.image && identity.image != ''"> 
                 <img 
                 class="avatar_edit"
                 src="{{ url + 'api/user/avatar/'+ identity.image }}" alt="imagen_user">

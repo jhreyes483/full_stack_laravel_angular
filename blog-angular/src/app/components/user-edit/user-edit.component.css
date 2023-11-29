@@ -1,6 +1,12 @@
-.avatar_edit{
-    width: 600px;
-    margin-bottom: 120px;
-    margin-top: 30px;
-    justify-content: center;
+
+
+.avatar_mask_edit{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 600px;
+}
+
+.avatar_mask_edit img{
+    height: 300px;
 }

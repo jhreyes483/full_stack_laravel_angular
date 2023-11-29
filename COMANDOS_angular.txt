@@ -67,4 +67,10 @@ ng g component components/login
 
 "Se crea componente para subir foto"
 
+"Se consume imagen y se muestra"
+
+"se agrega footer, se mejora css img y se crea componente category
+ng g component components/category-new
+"
+
 
