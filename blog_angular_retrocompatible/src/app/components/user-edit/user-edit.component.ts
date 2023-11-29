@@ -56,6 +56,7 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //console.log( this.identity ,'ddddd')
   }
  
   onSubmit(form : any){

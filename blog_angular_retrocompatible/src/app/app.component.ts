@@ -15,9 +15,10 @@ export class AppComponent {
   constructor(
     _userService : UserService
   ){
-    this.identity = _userService.getClearIdentity();
+    this.identity = _userService.getIdentity();
     this.token    = _userService.getToken();
     this.url      = _userService.base_url;
+
   }
 
 }

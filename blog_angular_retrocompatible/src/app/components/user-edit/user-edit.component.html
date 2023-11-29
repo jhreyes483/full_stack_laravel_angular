@@ -17,7 +17,7 @@
 
     <!-- formulario de ajuste -->
     <div class="col-md-12 row">
-        <form class="col-md-5 ml-0 pl-0" 
+        <form class="col-md-5 ml-0 pl-0 mx-auto" 
         #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
             <div class="form-group">
                 <label for="name">Nombre</label>
@@ -62,11 +62,11 @@
             <input type="submit" value="Actualizar mis datos" class="btn btn-success" [disabled]="userEditForm.invalid">
 
         </form>
-        <div class="col-md-5 ml-0 pl-0">
+        <div class="col-md-5 ml-0 pl-0 mx-auto">
             <div  class="avatar_mask_edit"
              *ngIf="identity && identity.image && identity.image != ''"> 
                 <img 
-                class="avatar_edit"
+                class="avatar_edit mx-auto"
                 src="{{ url + 'api/user/avatar/'+ identity.image }}" alt="imagen_user">
             </div>
             <!--  componente para subir imagenes -->
