@@ -69,7 +69,13 @@
                 class="avatar_edit"
                 src="{{ url + 'api/user/avatar/'+ identity.image }}" alt="imagen_user">
             </div>
-          
+            <!--  componente para subir imagenes -->
+            <app-file-upload 
+                [apiUrl]="url_anex" 
+                [itemId]="id_anex" 
+                (uploadResult)="resposeFromFile($event)">
+            </app-file-upload>
+            
         </div>
 
     </div>
@@ -77,11 +83,7 @@
     <hr>
     <div>
         <div class="col-md-5 ml-0 pl-0">
-            <!-- 
-                            {{ name_image}}
-        <app-file-upload [uploadData]="uploadData" (uploadResult)="onUploadResult($event)"></app-file-upload>
-      
-             -->
+
 
         </div>
 

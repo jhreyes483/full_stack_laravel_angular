@@ -14,7 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { CategoryNewComponent } from './components/category-new/category-new.component';
 
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';// formato de texto enriqusido
+import { FileUploadComponent } from './components/utils/file-upload/file-upload.component'; // componente personalisado para subir archivos
 
 
 
@@ -34,10 +35,13 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     FormsModule, 
     ReactiveFormsModule,
     RouterModule.forRoot(routes), 
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot() 
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+    FileUploadComponent,
+
+   // AngularFileUploaderModule 
 
   ],
-  providers: [FormsModule,
+  providers: [FormsModule
     //FroalaEditorModule.forRoot(), FroalaViewModule.forRoot() 
   ],
   bootstrap: [AppComponent]

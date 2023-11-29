@@ -105,3 +105,6 @@ se crea componente error
 "
 
 "Se implemnenta froalaEditor formato de texto enrriquesido"
+
+
+"Se implemnenta froalaEditor formato de texto enrriquesido y se crea componente para subir imagenes ejemplo de pasar variables entre componentes"

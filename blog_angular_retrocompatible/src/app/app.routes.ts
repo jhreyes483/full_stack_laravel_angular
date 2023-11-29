@@ -4,6 +4,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { FileUploadComponent } from './components/utils/file-upload/file-upload.component';
 
 export const routes: Routes = [
     {
@@ -30,6 +31,10 @@ export const routes: Routes = [
     {
         path: 'ajustes',
         component: UserEditComponent
+    },
+    {
+        path: 'file',
+        component:FileUploadComponent
     },
 
     {
