@@ -91,3 +91,15 @@ npm install @kolkov/angular-editor --save
 
 /*** ************************************/
 History project no_tandalone
+
+"se crea componente login 
+ng g c components/login
+
+se configura router
+se crea componente register
+ng g component components/register
+"
+
+"
+se crea componente error
+"
