@@ -118,6 +118,14 @@ class UserController extends Controller
             $image_name = time().$image->getClientOriginalName();
             \Storage::disk('users')->put($image_name, \File::get($image));
 
+
+            $user     = $this->getUserAuth($request);
+            $user     = User::find($user->id);
+            $user->image = $image_name;
+            $user->save(); 
+
+
+
             $data = [
                 'image'  => $image_name,
                 'status' => 'success',

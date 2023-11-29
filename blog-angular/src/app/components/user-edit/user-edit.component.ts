@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user/user.service';
+import {FileUploadComponent } from '../utils/file-upload/file-upload.component';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule,  ReactiveFormsModule],
+  imports: [CommonModule, FormsModule,  ReactiveFormsModule, FileUploadComponent ],
   providers:[UserService],
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.css'
@@ -16,22 +17,22 @@ export class UserEditComponent {
   public page_title :string;
   public status : string;
   public user : User;
-  public identity : {
-    id:number,
-    name: string,
-    surname: string,
-    email:string
-  };
+  public identity : any;
   public token : string | null;
+  //public name_image :any;
+  //public uploadData: { name_image: string, status_change: boolean };
 
   constructor(
     private _userServices : UserService
   ){
+
     this.page_title = 'Ajustes';
     this.status = '';
     this.identity = this._userServices.getIdentity();
     this.token = this._userServices.getToken();
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
+  //  this.name_image = 'test_img';
+   // this.uploadData = { name_image: '', status_change: false };
 
 
     if(this.identity){
@@ -47,9 +48,22 @@ export class UserEditComponent {
         );
     }
   }
+/*
+  onNameImageChange(value: any) {
+    // Capturar el valor emitido por el componente hijo
+    this.name_image = value;
+    console.log('Valor capturado en el padre:', this.name_image);
+  }
+
+  onUploadResult(result: { name_image: string, status_change: boolean }) {
+    console.log('Objeto actualizado en el padre:', result);
+    // Actualizar el objeto en el componente padre si es necesario
+    this.uploadData = result;
+  }
+  */
 
   onSubmit(form : any){
-
+    
     this._userServices.update(this.user).then(response => {
       console.log('ok', response)
         if(response.status == 'success'){

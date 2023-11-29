@@ -65,4 +65,6 @@ ng g component components/login
 
 "se crea login de usario"
 
+"Se crea componente para subir foto"
+
 

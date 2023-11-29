@@ -73,22 +73,30 @@
  
             type="textarea" name="description" class="form-control">
         </div>
+        <div >
+       
 
-        <div class="form-group">
-            <label for="image">Avatar</label>
-            <input 
-            #image="ngModel" [(ngModel)] ="user.image"
- 
-            type="file" name="image" class="form-control">
-            <small 
-            *ngIf="!image.valid && image.touched"
-            class="invalid-feedback d-block">
-                El email no es valido
-            </small>
+
+          
+
         </div>
        
-        <input type="submit" value="Actualizar" class="btn btn-success" 
+        <input type="submit" value="Actualizar mis datos" class="btn btn-success" 
         [disabled] ="userEditForm.invalid"
         >
+
     </form>
+
+    <hr>
+    <div>
+        <div  class="col-md-5 ml-0 pl-0">
+            <!-- 
+                            {{ name_image}}
+        <app-file-upload [uploadData]="uploadData" (uploadResult)="onUploadResult($event)"></app-file-upload>
+      
+             -->
+             <app-file-upload></app-file-upload>
+            </div>
+    
+    </div>
 </div>
