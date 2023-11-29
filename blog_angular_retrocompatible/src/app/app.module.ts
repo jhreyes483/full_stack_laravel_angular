@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { CategoryNewComponent } from './components/category-new/category-new.component';
 
 
 
@@ -22,7 +23,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     RegisterComponent,
     ErrorComponent,
     HomeComponent,
-    UserEditComponent
+    UserEditComponent,
+    CategoryNewComponent
   ],
   imports: [
     BrowserModule,
