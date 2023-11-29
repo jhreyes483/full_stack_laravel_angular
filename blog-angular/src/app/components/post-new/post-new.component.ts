@@ -33,6 +33,7 @@ export class PostNewComponent implements OnInit {
   public identity   : any;
   public token      : any;
   public post       : any;
+  public categories :any;
 
   constructor(
     private _route           : ActivatedRoute,
@@ -92,24 +93,26 @@ export class PostNewComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.getCategories();
     this.post = new Post(1,this.identity.id,1,'','','','');
-    //console.log('post',this.post) 
   }
 
   onSubmit(form : any){
     
     console.log(this.post)
   }
-
-  /*
-        public id: number,
-        public user_id: number,
-        public category_id: number,
-        public title: string,
-        public content: string,
-        public image: string,
-        public createdAt: any
-  */
   
+  getCategories(){
+      this._categoryService.getCategories().then(response => {
+          if(response.status == 'success'){
+            this.status = 'success';
+            this.categories = response.categories;
+          }else{
+            this.status = 'error';
+          }
+      }).catch(error => {
+        this.status = 'error';
+      });
+    }
   
 }

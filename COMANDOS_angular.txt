@@ -84,4 +84,6 @@ https://github.com/kolkov/angular-editor
 npm install @kolkov/angular-editor --save
 "
 
+"Ejemplo de select en angular"
+
 
