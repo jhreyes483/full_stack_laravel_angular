@@ -4,13 +4,17 @@
         Registrate en nuestra plataforma para crear nuevas entradas y mucho más!!!
     </p>
 
-    <div class="alert alert-success col-md-5 mt-3" 
-    *ngIf="status == 'success'">
-    El registro se ha completado correctamente<a [routerLink]="['/login']"  class="nav-link">Logeate aquí</a>
+    <div *ngIf="isSubmit">
+        <div class="alert alert-success col-md-5 mt-3" 
+        *ngIf="status == 'success'">
+        El registro se ha completado correctamente<a [routerLink]="['/login']"  class="nav-link">Logeate aquí</a>
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="status == 'error'">
+            El registro no se ha completado correctamente
+        </div>
     </div>
-    <div class="alert alert-danger" *ngIf="status == 'error'">
-        El registro no se ha completado correctamente
-    </div>
+    
 
     <!-- formulario de registro -->
     <form class="col-md-5 ml-0 pl-0"

@@ -2,7 +2,7 @@
     <h1>{{page_title}}</h1>
     <p>Identificate en la plataforma para comenzar!!</p>
 
-    <div *ngIf="status">
+    <div *ngIf="isSubmit">
         <div class="alert alert-success col-md-5 mt-3" 
         *ngIf="status == 'success'">
             Bienivendo
@@ -12,9 +12,6 @@
             Credenciales incorrectas
         </div>
     </div>
-
-
-
 
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-md-5 ml-0 pl-0">
         <div class="form-group">

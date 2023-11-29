@@ -16,8 +16,8 @@
           [routerLink]="['/inicio']"  
           class="nav-link" >Inicio <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" >Categorias</a>
+        <li class="nav-item" *ngFor ="let category of categories">
+          <a class="nav-link"  >{{ category.name}}</a>
         </li>
       </ul>
 

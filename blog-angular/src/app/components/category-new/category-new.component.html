@@ -1,1 +1,46 @@
-<p>category-new works!</p>
+<div class="col-md-12 mt-3">
+    <h1>{{ page_title }}</h1>
+    <p>
+        Crear una nueva categoria para el blog.
+    </p>
+    <hr>
+
+    <div *ngIf="isSubmit">
+        <div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+            {{ msg }}
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+            {{ msg }}
+        </div>
+    </div>
+    <!-- formulario de crear categoria -->
+    <form 
+    #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)"  
+    class="col-md-5"
+    >
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input
+                #name="ngModel" [(ngModel)] ="category.name"
+                class="form-control" type="text" name="name"
+                required
+            >
+            <small
+                *ngIf="!name.valid && name.touched"
+                class="invalid-feedback d-block"
+            >
+                El nombre de la categoria no es válido
+            </small>
+
+        </div>
+
+         <input 
+         type="submit" value="Guardar"
+         class="btn btn-success" 
+         [disabled] ="categoryForm.invalid"
+         >
+
+    </form>
+
+       
+</div>

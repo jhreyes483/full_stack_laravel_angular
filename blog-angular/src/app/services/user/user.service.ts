@@ -121,7 +121,7 @@ export class UserService {
         console.log('storage not 2')
       }
     }
-    console.log(this.identity,'storage_identity')
+    //console.log(this.identity,'storage_identity')
     return this.identity;
   }
 

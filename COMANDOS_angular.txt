@@ -73,4 +73,6 @@ ng g component components/login
 ng g component components/category-new
 "
 
+"bucle *ngFor uso para iterar categorias"
+
 

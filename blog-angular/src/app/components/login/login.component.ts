@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import {Router, ActivatedRoute, Params} from '@angular/router'; // para parmetros por url
-
-
 
 @Component({
   selector: 'app-login',
@@ -17,22 +14,25 @@ import {Router, ActivatedRoute, Params} from '@angular/router'; // para parmetro
   providers: [UserService]
 })
 export class LoginComponent implements OnInit{
-  page_title: string = "Login"
-  public user: User;
-  public status: string;
-  public token: string | null;
-    public identity: any;
+  page_title       : string = "Login"
+  public user      : User;
+  public status    : string;
+  public token     : string | null;
+  public identity  : any;
+  public isSubmit  : boolean;
 
-  userService: UserService  = inject(UserService);
-  _router: Router           = inject(Router);
-  _route : ActivatedRoute   = inject(ActivatedRoute);
-
-
-  constructor() {
-    this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
-    this.status = 'error';
-    this.token = '';
+  //_userService: UserService  = inject(UserService);
+  constructor(
+    private _router     : Router,
+    private _route      : ActivatedRoute,
+    private _userService: UserService  
+  ) {
+    this.isSubmit = false;
+    this.status   = 'error';
+    this.token    = '';
     this.identity = {id:'',name:'',surname:'',email:'', image:''};
+
+    this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
   }
 
   ngOnInit(): void {
@@ -41,11 +41,11 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit(form: any) {
-    this.userService.login(this.user).then(response => {
+    this.isSubmit = true;
+    this._userService.login(this.user).then(response => {
       if (response.status && response.status != 'error' ) {
         
-
-        this.token  = response.token;
+        this.token    = response.token;
         this.identity = {
           id:      response.id,
           name:    response.name,

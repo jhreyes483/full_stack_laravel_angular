@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  component_name : string  = 'home'
+  page_title : string  = 'Inicio'
 }
