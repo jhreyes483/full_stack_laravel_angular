@@ -15,6 +15,15 @@ export class UserEditComponent {
   public token      : string | null;
   public url;
 
+  public froala_options:  Object = {
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+  };
+
+
   constructor(
     private _userServices : UserService
   ){
@@ -41,7 +50,7 @@ export class UserEditComponent {
         );
     } 
   }
-
+ 
   onSubmit(form : any){
     
     this._userServices.update(this.user).then(response => {

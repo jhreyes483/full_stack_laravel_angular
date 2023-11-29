@@ -52,8 +52,8 @@
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
-                <input #description="ngModel" [(ngModel)]="user.description" 
-                type="textarea" name="description"class="form-control">
+                <textarea [froalaEditor]="froala_options"  #description="ngModel" [(ngModel)]="user.description" 
+                type="textarea" name="description"class="form-control"></textarea>
             </div>
             <div>
 

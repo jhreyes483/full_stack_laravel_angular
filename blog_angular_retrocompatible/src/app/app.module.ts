@@ -14,6 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { CategoryNewComponent } from './components/category-new/category-new.component';
 
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+
 
 
 @NgModule({
@@ -32,8 +34,12 @@ import { CategoryNewComponent } from './components/category-new/category-new.com
     FormsModule, 
     ReactiveFormsModule,
     RouterModule.forRoot(routes), 
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot() 
+
   ],
-  providers: [FormsModule],
+  providers: [FormsModule,
+    //FroalaEditorModule.forRoot(), FroalaViewModule.forRoot() 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

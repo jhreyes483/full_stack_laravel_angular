@@ -103,3 +103,5 @@ ng g component components/register
 "
 se crea componente error
 "
+
+"Se implemnenta froalaEditor formato de texto enrriquesido"
