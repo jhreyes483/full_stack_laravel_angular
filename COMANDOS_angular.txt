@@ -89,3 +89,5 @@ npm install @kolkov/angular-editor --save
 "Ejemplo de select en angular"
 
 
+/*** ************************************/
+History project no_tandalone
