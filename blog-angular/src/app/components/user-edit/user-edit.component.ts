@@ -19,6 +19,7 @@ export class UserEditComponent {
   public user : User;
   public identity : any;
   public token : string | null;
+  public url;
   //public name_image :any;
   //public uploadData: { name_image: string, status_change: boolean };
 
@@ -31,6 +32,7 @@ export class UserEditComponent {
     this.identity = this._userServices.getIdentity();
     this.token = this._userServices.getToken();
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
+    this.url =  this._userServices.base_url
   //  this.name_image = 'test_img';
    // this.uploadData = { name_image: '', status_change: false };
 

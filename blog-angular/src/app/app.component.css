@@ -1,0 +1,12 @@
+
+
+.avatar_mask{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 900px;
+}
+
+.avatar_mask img{
+    height: 40px;
+}

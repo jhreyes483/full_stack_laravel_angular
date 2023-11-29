@@ -23,11 +23,13 @@ export class AppComponent implements OnInit, DoCheck {
   public title = 'Blog-Angular';
   public token : any;
   public identity : any;
+  public url :string;
 
   constructor(
     public _userService: UserService
   ) {
     this.loadUser();
+    this.url = this._userService.base_url
   }
 
   ngOnInit(): void {

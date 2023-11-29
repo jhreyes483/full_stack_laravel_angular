@@ -21,12 +21,7 @@ export class LoginComponent implements OnInit{
   public user: User;
   public status: string;
   public token: string | null;
-    public identity: {
-    id:string,
-    name:string,
-    surname:string,
-    email:string
-  };
+    public identity: any;
 
   userService: UserService  = inject(UserService);
   _router: Router           = inject(Router);
@@ -37,7 +32,7 @@ export class LoginComponent implements OnInit{
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
     this.status = 'error';
     this.token = '';
-    this.identity = {id:'',name:'',surname:'',email:''};
+    this.identity = {id:'',name:'',surname:'',email:'', image:''};
   }
 
   ngOnInit(): void {
@@ -51,7 +46,13 @@ export class LoginComponent implements OnInit{
         
 
         this.token  = response.token;
-        this.identity = {id: response.id,name: response.name,surname: response.surname,email: response.email}
+        this.identity = {
+          id:      response.id,
+          name:    response.name,
+          surname: response.surname,
+          email:   response.email,
+          image:   response.image
+        }
         this._router.navigate(['inicio'])
         // persistir datos usuario identificado
         if(this.token) localStorage.setItem('token', this.token);

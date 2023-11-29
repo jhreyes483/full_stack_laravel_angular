@@ -37,6 +37,18 @@
       </ul>
 
       <ul class="navbar-nav mr-right" *ngIf="token">
+        <li
+         *ngIf="identity && identity.image && identity.image != ''"
+         class="nav-item"
+         > 
+         <div class="avatar_mask">
+          <img 
+          class="avatar_user_nav"
+          src="{{ url + 'api/user/avatar/'+ identity.image }}" alt="imagen_user">
+         </div>
+        </li>
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">

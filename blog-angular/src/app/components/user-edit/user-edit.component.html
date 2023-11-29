@@ -5,98 +5,84 @@
     </p>
     <hr>
 
-<div *ngIf="status">
-    <div class="alert alert-success col-md-5 mt-3" 
-    *ngIf="status == 'success'">
-    Perfil actualizado
+    <div *ngIf="status">
+        <div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+            Perfil actualizado
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+            No se completo la actualización
+        </div>
     </div>
-    <div class="alert alert-danger" *ngIf="status == 'error'">
-       No se completo la actualización 
-    </div>
-</div>
 
 
     <!-- formulario de ajuste -->
-    <form class="col-md-5 ml-0 pl-0"
-    #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)"
-    >
-        <div class="form-group">
-            <label for="name">Nombre</label>
-            <input 
-          
-            #name="ngModel"  [(ngModel)]="user.name" 
-            required pattern="[a-zA-Z]+"
+    <div class="col-md-12 row">
+        <form class="col-md-5 ml-0 pl-0" 
+        #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input 
+                #name="ngModel" [(ngModel)]="user.name" 
+                required pattern="[a-zA-Z]+" 
+                type="text" name="name"class="form-control">
+                <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+                    El nombre no es valido
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="surname">Apellidos</label>
+                <input 
+                #surname="ngModel" [(ngModel)]="user.surname" 
+                required pattern="[a-zA-Z]+" 
+                type="text"name="surname" class="form-control">
+                {{ user.surname }}
+                <small *ngIf="!surname.valid && surname.touched" class="invalid-feedback d-block">
+                    Los apellidos no es valido
+                </small>
 
-            type="text"
-            name="name" 
-            class="form-control" 
-            >
-            <small  
-            *ngIf="!name.valid && name.touched"
-            class="invalid-feedback d-block">
-                El nombre no es valido
-            </small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input #email="ngModel" [(ngModel)]="user.email" required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                    type="email" name="email" class="form-control">
+                <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                    El email no es valido
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <input #description="ngModel" [(ngModel)]="user.description" 
+                type="textarea" name="description"class="form-control">
+            </div>
+            <div>
+
+            </div>
+
+            <input type="submit" value="Actualizar mis datos" class="btn btn-success" [disabled]="userEditForm.invalid">
+
+        </form>
+        <div class="col-md-5 ml-0 pl-0">
+            <div *ngIf="identity && identity.image && identity.image != ''"> 
+                <img 
+                class="avatar_edit"
+                src="{{ url + 'api/user/avatar/'+ identity.image }}" alt="imagen_user">
+            </div>
+            <app-file-upload></app-file-upload>
         </div>
-        <div class="form-group">
-            <label for="surname">Apellidos</label>
-            <input 
 
-            #surname="ngModel" [(ngModel)] ="user.surname"
-
-            required pattern="[a-zA-Z]+"
-            type="text" name="surname" class="form-control" >
-            {{ user.surname }}
-            <small 
-            *ngIf="!surname.valid && surname.touched"
-            class="invalid-feedback d-block">
-                Los apellidos no es valido
-            </small>
-
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input 
-            #email="ngModel" [(ngModel)] ="user.email"
- 
-            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-            type="email" name="email" class="form-control">
-            <small 
-            *ngIf="!email.valid && email.touched"
-            class="invalid-feedback d-block">
-                El email no es valido
-            </small>
-        </div>
-        <div class="form-group">
-            <label for="description">Descripción</label>
-            <input 
-            #description="ngModel" [(ngModel)] ="user.description"
- 
-            type="textarea" name="description" class="form-control">
-        </div>
-        <div >
-       
-
-
-          
-
-        </div>
-       
-        <input type="submit" value="Actualizar mis datos" class="btn btn-success" 
-        [disabled] ="userEditForm.invalid"
-        >
-
-    </form>
+    </div>
 
     <hr>
     <div>
-        <div  class="col-md-5 ml-0 pl-0">
+        <div class="col-md-5 ml-0 pl-0">
             <!-- 
                             {{ name_image}}
         <app-file-upload [uploadData]="uploadData" (uploadResult)="onUploadResult($event)"></app-file-upload>
       
              -->
-             <app-file-upload></app-file-upload>
-            </div>
-    
+
+        </div>
+
     </div>
 </div>
