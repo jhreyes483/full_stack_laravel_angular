@@ -3,56 +3,55 @@
 
   <!-- nemsaje de alerta -->
 
-  <!-- Formulario de crear entrada -->
-  <form class="col-md-5 ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
-    <div class="form-group">
-      <label for="title">Titulo</label>
-      <input type="text" name="title" class="form-control" required #title="ngModel" [(ngModel)]="post.title">
-      <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
-        El titulo no es valido
-      </small>
-    </div>
-    <div class="form-group">
-      <label for="title">Descripción</label>
-      <textarea class="form-control" #content="ngModel" [(ngModel)]="post.content" name="content" cols="30"
-        rows="5"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="category_id">Categorias</label>
-      <select name="category_id" #category ="ngModel" [(ngModel)] = "post.category_id"
-      class="form-control"
-      >
-        <option *ngFor="let  category of categories"  value="{{category.id}}">
+  <div class="row">
+    <!-- Formulario de crear entrada -->
+    <form class="col-md-6 ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
+      <div class="form-group">
+        <label for="title">Titulo</label>
+        <input type="text" name="title" class="form-control" required #title="ngModel" [(ngModel)]="post.title">
+        <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+          El titulo no es valido
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="title">Descripción</label>
+        <textarea class="form-control" #content="ngModel" [(ngModel)]="post.content" name="content" cols="30"
+          rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="category_id">Categorias</label>
+        <select name="category_id" #category="ngModel" [(ngModel)]="post.category_id" class="form-control">
+          <option *ngFor="let  category of categories" value="{{category.id}}">
             {{category.name }}
-        </option>
-      </select>
-    </div>
+          </option>
+        </select>
+      </div>
 
 
-    <!-- 
+      <input type="submit" value="enviar" class="btn btn-success">
+    </form>
+    <form [formGroup]="myForm" (ngSubmit)="submit()">
+      <label for="file">Imagen</label>
+      <div class="form-group">
+        <input formControlName="file" id="file" type="file" class="form-control" 
+        (change)="onFileChange($event)"
+        >
+        <div *ngIf="f['file'].touched && f['file'].invalid" class="alert alert-danger">
+          <div *ngIf="f['file'].errors && f['file'].errors['required']">
+            El archivo es requerido
+          </div>
+        </div>
+      </div>
 
-                    <angular-editor    formControlName="content" [config]="editorConfig">
-            <ng-template #customButtons let-executeCommandFn="executeCommandFn">
-              <ae-toolbar-set>
-               <textarea #content ="ngModel" [(ngModel)] = "post.content" name="content" cols="30" rows="10">asdfds</textarea>
-              </ae-toolbar-set>
-            </ng-template>
-          </angular-editor>
-        -->
-
-
-    <!-- 
-         <textarea
-         formControlName="htmlContent"
-         [config]="editorConfig"
-         name="content" id="" cols="30" rows="10" class="form-control" >
-
-         </textarea>
-          -->
-    <input type="submit" value="enviar" class="btn btn-success">
-  </form>
-
-  <hr>
+    </form>
 
 
-</div>
+
+
+
+
+
+    <hr>
+
+
+  </div>

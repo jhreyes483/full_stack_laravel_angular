@@ -29,6 +29,8 @@ npm install -g @angular/cli
 
 crear proyecto de angular
 ng new
+// tambien se puede crear sin dependecia 
+ng new --no-standalone nameproyect
 
 ejecutar el serve
 ng serve
