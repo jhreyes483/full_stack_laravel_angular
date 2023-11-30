@@ -20,7 +20,8 @@ class PostController extends Controller
                     'index', 
                     'show',
                     'getPostByCategory',
-                    'getPostByUser'
+                    'getPostByUser',
+                    'getImage'
                     ]
                 ]
             );
@@ -66,7 +67,8 @@ class PostController extends Controller
         $validate = $this->validateRequest($request, [
             'title'       => 'required',
             'content'     => 'required',
-            'category_id' => 'required|int'
+            'category_id' => 'required|int',
+            'image'       => 'required'
         ]);
         if (!$validate['error']) {
             $user = $this->getUserAuth($request);
@@ -76,6 +78,7 @@ class PostController extends Controller
             $post->content     = $request->content;
             $post->category_id = $request->category_id;
             $post->user_id     = $user->id;
+            $post->image       = $request->image;
             $post->save();
 
             $data = [

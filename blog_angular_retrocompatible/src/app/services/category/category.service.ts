@@ -23,7 +23,6 @@ export class CategoryService {
 
         this.base_url = config.base_url;
         this.token    = null;
-        this.identity = _userService.getClearIdentity();
         this.headers  = {
             'Content-Type': 'application/json',
             'Authorization': _userService.getToken(),

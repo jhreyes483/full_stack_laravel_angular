@@ -108,3 +108,7 @@ se crea componente error
 
 
 "Se implemnenta froalaEditor formato de texto enrriquesido y se crea componente para subir imagenes ejemplo de pasar variables entre componentes"
+
+"Se imploementa metodo recaraga automatica nav y se recorre las categorias"
+
+"Se crea recorrido de posts y botones"

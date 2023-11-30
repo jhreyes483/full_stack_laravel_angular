@@ -52,8 +52,9 @@
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
+                <!-- formato de texto enrriquesido -->
                 <textarea [froalaEditor]="froala_options"  #description="ngModel" [(ngModel)]="user.description" 
-                type="textarea" name="description"class="form-control"></textarea>
+                type="textarea" name="description"class="form-control">{{ user.description }}</textarea>
             </div>
             <div>
 
