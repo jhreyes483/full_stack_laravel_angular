@@ -65,8 +65,6 @@ export class PostEditComponent implements OnInit {
 
   }
 
-
-
   ngOnInit(): void {
     this.getCategories();
     this.post = new Post(1, this.identity.id, 1, '', '', '', '');
@@ -74,7 +72,7 @@ export class PostEditComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    this._postService.update(this.post, this.post.id).then(response => {
+        this._postService.update(this.post, this.post.id).then(response => {
       response = response.data;
       if (response.status == 'success') {
         this.isSubmit = true;
@@ -101,8 +99,8 @@ export class PostEditComponent implements OnInit {
 
   resposeFromFile(e: any) {
     if (e.status == 'success') {
-      this.post.image = e.fileName
-      this.isSubmitImage = true;
+            this.post.image = e.fileName
+            this.isSubmitImage = true;
       this.isSubmit = true;
       //alert('se ha guradado la imagen, ya pude crear el post')
       // this.createPost();
@@ -131,8 +129,6 @@ export class PostEditComponent implements OnInit {
       });
     })
   }
-
-
 
   getCategories() {
     this._categoryService.getCategories().then(response => {

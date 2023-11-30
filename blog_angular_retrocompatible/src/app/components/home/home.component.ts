@@ -32,18 +32,17 @@ export class HomeComponent {
   }
 
   deletePost(id: any) {
-    alert('entro');
     this._postService.delete(id).then(response => {
-      console.log(response)
+      response = response.data;
       if (response.status == 'success') {
-        //this.status = 'success';
         this.posts = response.posts
+        this.getPost();
         console.log(this.posts, 'posts');
       } else {
 
       }
     }).catch(error => {
-      console.log(error)
+      console.log(error,'error')
     });
   }
 

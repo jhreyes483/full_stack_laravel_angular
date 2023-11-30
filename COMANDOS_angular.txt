@@ -131,3 +131,5 @@ ng g component components/post-detail"
  se agrega archivo proxy angular
 ng serve --proxy-config proxy.conf.json
 "
+
+"se implementa metodo delete desde angular"

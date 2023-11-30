@@ -106,7 +106,8 @@ class PostController extends Controller
         $validate  = $this->validateRequest($request, [
             'title'       => 'required',
             'content'     => 'required',
-            'category_id' => 'required|int'
+            'category_id' => 'required|int',
+            'image'       => 'required'
         ]);
 
         if($validate['error']){
@@ -134,6 +135,7 @@ class PostController extends Controller
             $post->title       = $request->title;
             $post->content     = $request->content;
             $post->category_id = $request->category_id;
+            $post->image       = $request->image;
             $post->save();
 
             $data = [
