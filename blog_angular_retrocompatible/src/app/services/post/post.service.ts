@@ -35,13 +35,22 @@ export class PostService {
         return await data.json() ?? [];
     }
 
-    async getPost() {
+    async getPost(id = null) {
+        var url : string = '';
+        if(id){
+           url = this.base_url + 'api/post/'+id
+        }else{
+           url = this.base_url + 'api/post'
+        }
+
         var options = {
             method: 'GET',
             headers: this.headers
         }
-        const data = await fetch(this.base_url + 'api/post', options);
+        const data = await fetch(url, options);
         return await data.json() ?? [];
     }
+
+
 }
 

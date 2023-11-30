@@ -114,3 +114,6 @@ se crea componente error
 "Se imploementa metodo recaraga automatica nav y se recorre las categorias"
 
 "Se crea recorrido de posts y botones"
+
+"Se crea componente post-detail
+ng g component components/post-detail"

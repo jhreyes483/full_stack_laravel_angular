@@ -7,6 +7,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { FileUploadComponent } from './components/utils/file-upload/file-upload.component';
 import { PostNewComponent } from './components/post-new/post-new.component';
 import { CategoryNewComponent } from './components/category-new/category-new.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +46,11 @@ export const routes: Routes = [
     {
     path: 'crear-categoria',
     component: CategoryNewComponent
+    },
+    {
+        //<!-- le pasa el por get a la url para el detail -->
+        path: 'entrada/:id',
+        component: PostDetailComponent
     },
 
     {
