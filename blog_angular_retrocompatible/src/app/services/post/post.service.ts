@@ -35,12 +35,12 @@ export class PostService {
         return await data.json() ?? [];
     }
 
-    async getPost(id = null) {
+    async getPost(id : any = null) {
         var url : string = '';
         if(id){
-           url = this.base_url + 'api/post/'+id
+           url = this.base_url + 'api/post/'+id /* solo el detal */
         }else{
-           url = this.base_url + 'api/post'
+           url = this.base_url + 'api/post' /*todos los post*/
         }
 
         var options = {

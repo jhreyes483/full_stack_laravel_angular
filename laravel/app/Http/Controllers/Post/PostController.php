@@ -48,12 +48,13 @@ class PostController extends Controller
                 'code'   => 200,
                 'status' => 'success',
                 'msg'    => 'post',
-                'post'  => $post->load('category')
+                'post'   => $post->load('category')
+                                 ->load('user')
             ];
         } else {
             $data = [
                 'code'  => 404,
-                'status' => 'error',
+                'status'=> 'error',
                 'msg'   => 'No existe  post',
                 'post'  => $post
             ];
