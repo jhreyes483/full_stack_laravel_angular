@@ -135,3 +135,8 @@ ng serve --proxy-config proxy.conf.json
 "se implementa metodo delete desde angular"
 
 "Se cre modal aler de pro-borrar"
+
+"se genera ruta dinamica desde blucle de categoria nav
+se crea nuevo componente de category-detail
+ ng g component component components/category-detail
+"
