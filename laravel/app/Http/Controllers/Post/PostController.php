@@ -154,8 +154,8 @@ class PostController extends Controller
     }
 
     public function destroy($id, Request $request)
-    {
-
+    {   
+        
         $post    = Post::find($id);
         $user    = $this->getUserAuth($request);
         $error   = false;

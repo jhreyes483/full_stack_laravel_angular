@@ -1,1 +1,71 @@
-<p>post-edit works!</p>
+<div class="col-md-12 mt-3">
+    <div class="mb-4">
+        <h1>{{ page_title }}</h1>
+
+        Edita tu blog
+        <hr>
+    </div>
+ 
+    <!-- nemsaje de alerta -->
+    <div *ngIf="isSubmit">
+        <div class="alert alert-{{ msg_class }} col-md-5 mt-3">
+            {{ msg }}
+            <!-- 
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+               -->
+        </div>
+    </div>
+    <div *ngIf="!categories"  >
+        Cargando...
+    </div>
+
+    <div *ngIf="categories" class="row justify-content-around">
+        <!-- Formulario de crear entrada -->
+        <form class="col-md-5  ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
+            <div class="form-group">
+                <label for="title">Titulo</label>
+                <input type="text" name="title" class="form-control" required #title="ngModel" [(ngModel)]="post.title">
+                <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+                    El titulo no es valido
+                </small>
+            </div>
+
+
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <!-- formato de texto enrriquesido -->
+                <textarea [froalaEditor]="froala_options" #content="ngModel" [(ngModel)]="post.content"
+                    name="content">{{ post.content }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="category_id">Categorias</label>
+                <select name="category_id" #category="ngModel" [(ngModel)]="post.category_id" class="form-control">
+                    <option *ngFor="let  category of categories" value="{{category.id}}">
+                        {{category.name }}
+                    </option>
+                </select>
+            </div>
+
+
+            <input type="submit" value="enviar" class="btn btn-success">
+        </form>
+
+        <div class="col-md-6 mt-5 ml-0 pl-0">
+            <div *ngIf="post.image" class="post-image-edit w-100">
+                <img src="{{url + 'api/post/image/'+ post.image}}" class="w-100">
+            </div>
+            <div *ngIf="!post.image" class="post-image w-100">
+                <img src="https://via.placeholder.com/400x250" class="w-100">
+            </div>
+
+
+
+            <app-file-upload [apiUrl]="url_anex" [itemId]="id_anex" (uploadResult)="resposeFromFile($event)">
+            </app-file-upload>
+            <hr />
+
+        </div>
+
+
+    </div>

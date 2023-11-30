@@ -125,3 +125,9 @@ ng g component components/post-detail"
 "se crea componente  ng g c components/post-edit"
 
 "se le pasa el por get a la url para el edit"
+
+"se incorpora axios para put y delete
+ npm install axios
+ se agrega archivo proxy angular
+ng serve --proxy-config proxy.conf.json
+"

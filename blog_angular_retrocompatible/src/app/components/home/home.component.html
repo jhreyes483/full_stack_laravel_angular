@@ -9,7 +9,7 @@
 
 <hr>
 
-<div class="container-fluid mt-3" >
+<div class="container-fluid mt-1" >
 
     <div class="card-columns">
         <article class="card w-100" *ngFor="let post of posts">
@@ -30,7 +30,7 @@
 
                     <span *ngIf="identity && identity.id == post.user_id">
                         <a [routerLink]="['/editar-entrada',post.id]" class="btn btn-warning mr-2">Editar</a>
-                        <a [routerLink]="['/inicio']" class="btn btn-danger mr-2">Borrar</a>
+                        <a (click)="deletePost(post.id)" class="btn btn-danger mr-2">Borrar</a>
                     </span>
                    
                 </div>

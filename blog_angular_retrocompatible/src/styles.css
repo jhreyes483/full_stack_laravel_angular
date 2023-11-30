@@ -6,3 +6,10 @@
 footer{
     color: lightgray
 }
+
+
+.post-image-edit{
+    height: 320px;
+    width: 320px;
+    overflow: hidden; /* oculta todo lo que sibrepase los 200px */
+}

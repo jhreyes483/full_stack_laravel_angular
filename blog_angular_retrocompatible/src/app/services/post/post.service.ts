@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { config } from '../config.services';
 import { UserService } from '../user/user.service';
+import axios from 'axios';
 
 @Injectable({
     providedIn: 'root'
@@ -51,14 +52,25 @@ export class PostService {
         return await data.json() ?? [];
     }
 
-    async update(post : any, id: any) {
-        var options = {
-            method: 'PUT',
-            headers: this.headers
+    async update(post : any, id: any): Promise<any>  {
+        console.log(this.base_url+ 'post/' + id)
+        var headers = this.headers;
+        let data = {
+            title: post.title,
+            content: post.content,
+            category_id: post.category_id,
+            image: post.image
         }
-        const data = await fetch(this.base_url+ 'post/' + id, options);
-        return await data.json() ?? [];
+       return  await  axios.put(this.base_url+ 'api/post/' + id, data , { headers });
     }
+
+
+    async delete(id: any): Promise<any> {
+        var headers = this.headers;
+        return await  axios.delete(this.base_url+ 'api/post/'+id, { headers });
+    }
+
+
 
 
 }
