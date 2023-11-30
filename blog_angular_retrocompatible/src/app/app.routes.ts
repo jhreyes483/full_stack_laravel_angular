@@ -8,6 +8,7 @@ import { FileUploadComponent } from './components/utils/file-upload/file-upload.
 import { PostNewComponent } from './components/post-new/post-new.component';
 import { CategoryNewComponent } from './components/category-new/category-new.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 export const routes: Routes = [
     {
@@ -51,6 +52,10 @@ export const routes: Routes = [
         //<!-- le pasa el por get a la url para el detail -->
         path: 'entrada/:id',
         component: PostDetailComponent
+    },
+    {
+        path: 'editar-entrada/:id',
+        component: PostEditComponent
     },
 
     {

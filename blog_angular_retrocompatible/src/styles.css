@@ -2,6 +2,7 @@
 .post-image{
     height: 200px;
     overflow: hidden; /* oculta todo lo que sibrepase los 200px */
-
-
+}
+footer{
+    color: lightgray
 }

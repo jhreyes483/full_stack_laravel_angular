@@ -49,3 +49,8 @@ ng g component components/user-edit
 "
 
 "html inicial de edit-user"
+
+ "directiva interpreta etiqutas htlm que este de db : Angurar
+load para traer joins : laraver"
+
+"se arregla la posision del footer cuando no hay contenido"

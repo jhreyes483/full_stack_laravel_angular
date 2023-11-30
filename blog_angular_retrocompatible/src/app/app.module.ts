@@ -17,7 +17,8 @@ import { CategoryNewComponent } from './components/category-new/category-new.com
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';// formato de texto enriqusido
 import { FileUploadComponent } from './components/utils/file-upload/file-upload.component';
 import { PostNewComponent } from './components/post-new/post-new.component';
-import { PostDetailComponent } from './components/post-detail/post-detail.component'; // componente personalisado para subir archivos
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component'; // componente personalisado para subir archivos
 
 
 
@@ -31,7 +32,8 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     UserEditComponent,
     CategoryNewComponent,
     PostNewComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,

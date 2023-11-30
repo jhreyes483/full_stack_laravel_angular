@@ -51,6 +51,15 @@ export class PostService {
         return await data.json() ?? [];
     }
 
+    async update(post : any, id: any) {
+        var options = {
+            method: 'PUT',
+            headers: this.headers
+        }
+        const data = await fetch(this.base_url+ 'post/' + id, options);
+        return await data.json() ?? [];
+    }
+
 
 }
 

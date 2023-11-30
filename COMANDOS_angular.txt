@@ -121,3 +121,7 @@ ng g component components/post-detail"
 "crear rutas por get para detail"
 
 "se agregan providers de todos services"
+
+"se crea componente  ng g c components/post-edit"
+
+"se le pasa el por get a la url para el edit"
