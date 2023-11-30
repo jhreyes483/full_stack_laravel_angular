@@ -105,13 +105,13 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        $categories = Category::find($id);
-        if (is_object($categories)) {
+        $category = Category::find($id);
+        if (is_object($category)) {
             $data = [
                 'status'      => 'success',
                 'code'        => 200,
                 'msg'         => 'Categories',
-                'categories'  => $categories
+                'category'    => $category
             ];
         } else {
             $data = [
