@@ -11,62 +11,76 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 
+import { IdentityGuard } from './services/ideinty.guard';
+
 export const routes: Routes = [
     {
         path: '',
         component: LoginComponent,
+        canActivate: [IdentityGuard]
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+       // canActivate: [IdentityGuard]
     },
     {
         path: 'logout/:sure',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [IdentityGuard]
     },
     {
         path: 'registro',
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [IdentityGuard]
     },
     {
         path: 'inicio',
-        component: HomeComponent
+        component: HomeComponent,
+        //canActivate: [IdentityGuard]
     },
 
     {
         path: 'ajustes',
-        component: UserEditComponent
+        component: UserEditComponent,
+        canActivate: [IdentityGuard]
     },
     {
         path: 'file',
-        component:FileUploadComponent
+        component:FileUploadComponent,
+        canActivate: [IdentityGuard]
     },
     {
         path: 'crear-entrada',
-        component: PostNewComponent
+        component: PostNewComponent,
+        canActivate: [IdentityGuard]
     },
     {
-    path: 'crear-categoria',
-    component: CategoryNewComponent
+        path: 'crear-categoria',
+        component: CategoryNewComponent,
+        canActivate: [IdentityGuard]
     },
     {
         //<!-- le pasa el por get a la url para el detail -->
         path: 'entrada/:id',
-        component: PostDetailComponent
+        component: PostDetailComponent,
+      //  canActivate: [IdentityGuard]
     },
     {
         path: 'editar-entrada/:id',
-        component: PostEditComponent
+        component: PostEditComponent,
+        canActivate: [IdentityGuard]
     },    
     {
         path: 'categoria/:id',
-        component: CategoryDetailComponent
+        component: CategoryDetailComponent,
+        canActivate: [IdentityGuard]
     },
 
     {
         // debe ser la final
         path: '**',
-        component: ErrorComponent
+        component: ErrorComponent,
     }
     
   ]

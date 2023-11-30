@@ -140,3 +140,7 @@ ng serve --proxy-config proxy.conf.json
 se crea nuevo componente de category-detail
  ng g component component components/category-detail
 "
+
+"se crea nuevo modulo de detalle categoria"
+
+"se implementa guardian de rutas"

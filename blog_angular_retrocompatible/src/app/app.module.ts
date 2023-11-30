@@ -20,6 +20,8 @@ import { PostNewComponent } from './components/post-new/post-new.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component'; // componente personalisado para subir archivos
+import { IdentityGuard } from './services/ideinty.guard';// guardian de rutas
+import { UserService } from './services/user/user.service';
 
 
 
@@ -49,8 +51,11 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
    // AngularFileUploaderModule 
 
   ],
-  providers: [FormsModule
-    //FroalaEditorModule.forRoot(), FroalaViewModule.forRoot() 
+  providers: [ /** manera global */
+    FormsModule,
+    IdentityGuard,
+    UserService
+
   ],
   bootstrap: [AppComponent]
 })
