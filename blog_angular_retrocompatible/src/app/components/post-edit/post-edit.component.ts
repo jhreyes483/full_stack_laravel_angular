@@ -90,9 +90,6 @@ export class PostEditComponent implements OnInit {
       }
     }).catch(error => {
       console.log(error);
-
- 
-
     });
    
   }
@@ -108,14 +105,18 @@ export class PostEditComponent implements OnInit {
   }
 
   getPost() {
-    // sacar el id por get
+    // sacar el id por get "de la url"
     this._route.params.subscribe(params => {
       let id = +params['id'];
 
+      // peticion para sacar los datos de post
       this._postService.getPost(id).then(response => {
         if (response.status == 'success') {
-
           this.post = response.post;
+
+          if(this.post.user_id != this.identity.id){
+            this._router.navigate(['inicio']);
+          }
         } else {
 
           this._router.navigate(['inicio']);
