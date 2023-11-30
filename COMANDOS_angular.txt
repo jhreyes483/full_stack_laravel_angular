@@ -117,3 +117,7 @@ se crea componente error
 
 "Se crea componente post-detail
 ng g component components/post-detail"
+
+"crear rutas por get para detail"
+
+"se agregan providers de todos services"

@@ -11,6 +11,7 @@ import { PostService } from '../../services/post/post.service';
   selector: 'app-post-new',
   templateUrl: './post-new.component.html',
   styleUrl: './post-new.component.css',
+  providers: [PostService,CategoryService,UserService]
   
 })
 export class PostNewComponent implements OnInit {
