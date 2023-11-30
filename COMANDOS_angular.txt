@@ -133,3 +133,5 @@ ng serve --proxy-config proxy.conf.json
 "
 
 "se implementa metodo delete desde angular"
+
+"Se cre modal aler de pro-borrar"
