@@ -24,6 +24,8 @@ import { IdentityGuard } from './services/ideinty.guard';// guardian de rutas
 import { UserService } from './services/user/user.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PostListComponent } from './components/post-list/post-list.component';
+import { TestComponent } from './components/test/test.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -41,7 +43,8 @@ import { PostListComponent } from './components/post-list/post-list.component';
     PostEditComponent,
     CategoryDetailComponent,
     ProfileComponent,
-    PostListComponent
+    PostListComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
     RouterModule.forRoot(routes), 
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     FileUploadComponent,
+    HttpClientModule
 
    // AngularFileUploaderModule 
 

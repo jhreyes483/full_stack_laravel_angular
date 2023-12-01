@@ -13,6 +13,7 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
 
 import { IdentityGuard } from './services/ideinty.guard';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TestComponent } from './components/test/test.component';
 
 export const routes: Routes = [
     {
@@ -81,6 +82,11 @@ export const routes: Routes = [
         path: 'perfil/:id',
         component: ProfileComponent,
         canActivate: [IdentityGuard]
+    },
+    {
+        path: 'test',
+        component: TestComponent,
+      //  canActivate: [IdentityGuard]
     },
 
     {

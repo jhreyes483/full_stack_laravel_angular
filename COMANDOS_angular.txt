@@ -153,4 +153,8 @@ se crea nuevo componente de category-detail
 ng g c components/post-list
 "
 
+
 "ejemplo de implementacion de un componente que se usa en varios lados, y pasar varibles y funciones"
+
+"ejemplo de peticion con HttpClientModule"
+
