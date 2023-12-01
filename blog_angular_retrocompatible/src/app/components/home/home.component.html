@@ -9,65 +9,15 @@
 
 <div class="container-fluid mt-1">
 
-    <div class="card-columns">
-        <article class="card w-100" *ngFor="let post of posts">
-            <div class="card-header">
-                <!-- le pasa el por get a la url para el detail -->
-                <a [routerLink]="['/entrada', post.id]">{{post.title}}</a>
-            </div>
-            <div class="card-body">
-                <div *ngIf="post.image" class="post-image w-100">
-                    <img src="{{url + 'api/post/image/'+ post.image}}" class="w-100">
-                </div>
-                <div *ngIf="!post.image" class="post-image w-100">
-                    <img src="https://via.placeholder.com/400x250" class="w-100">
-                </div>
-                <div class="post-buttons mt-3">
-                    <!-- le pasa el por get a la url para el detail -->
-                    <a [routerLink]="['/entrada',post.id]" class="btn btn-success mr-2">Leer</a>
-
-                    <span *ngIf="identity && identity.id == post.user_id">
-                        <a [routerLink]="['/editar-entrada',post.id]" class="btn btn-warning mr-2 text-white">Editar</a>
-                    
- 
-                        <!-- open modal -->
-                        <button type="button" class="btn btn-danger" data-toggle="modal"  [attr.data-target]="'#exampleModal'+post.id">
-                            Borrar
-                        </button>
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="{{'exampleModal'+post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Seguro que quieres borrar esta entrada?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                    Vas a borrar definitivamente {{ post.title }}
-                                </div>
-                                <div class="modal-footer">
-                                <a (click)="deletePost(post.id)" class="btn btn-danger mr-2 text-white" data-dismiss="modal">Borrar</a>
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                          <!-- -------------------- -->
-
-
-                        
-                    </span>
-
-                </div>
-            </div>
-        </article>
-    </div>
-
-
-
+    <app-post-list 
+    [posts]   ="posts"
+    [identity]="identity"
+    [url]     ="url"
+    (param_post_id)="deletePost($event)"
+    >
+   
+    </app-post-list>
+   
 
 
 </div>

@@ -23,6 +23,7 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
 import { IdentityGuard } from './services/ideinty.guard';// guardian de rutas
 import { UserService } from './services/user/user.service';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PostListComponent } from './components/post-list/post-list.component';
 
 
 
@@ -39,7 +40,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     PostDetailComponent,
     PostEditComponent,
     CategoryDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,

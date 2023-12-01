@@ -146,3 +146,11 @@ se crea nuevo componente de category-detail
 "se implementa guardian de rutas"
 
 "se agrega redireccion a inicio en edicon cuando el post no es propio"
+
+"componente profile implementado"
+
+"se crea comopnete que se usa en varias partes
+ng g c components/post-list
+"
+
+"ejemplo de implementacion de un componente que se usa en varios lados, y pasar varibles y funciones"
