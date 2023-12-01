@@ -22,6 +22,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component'; // componente personalisado para subir archivos
 import { IdentityGuard } from './services/ideinty.guard';// guardian de rutas
 import { UserService } from './services/user/user.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -37,7 +38,8 @@ import { UserService } from './services/user/user.service';
     PostNewComponent,
     PostDetailComponent,
     PostEditComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

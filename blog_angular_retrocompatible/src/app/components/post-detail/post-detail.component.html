@@ -3,7 +3,8 @@
 </div>
 
 <div class="col-md-12 mt-3" *ngIf="post">
-    <h1>{{post.title}}</h1>
+    <h1>{{post.title}}</h1>  
+
     <hr />
     <p>
         {{ post.category.name }} - {{ post.user.name + ' ' +post.user.surname }}
@@ -12,4 +13,6 @@
 
     <!-- esta directiva interpreta etiqutas htlm que este de db -->
     <p [innerHtml] ="post.content" ></p>
+    <hr>
+    Creado por: <a [routerLink]="['/perfil',post.user_id]">{{ post.user.name }}</a>
 </div>

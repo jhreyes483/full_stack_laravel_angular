@@ -263,7 +263,7 @@ class PostController extends Controller
         return  response()->json( [
             'status' => 'success',
             'code'   => 200,
-            'posts'  => $posts
+            'posts'  => $posts->load('user')
         ], 200 );
     }
 }

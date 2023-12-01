@@ -12,6 +12,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 
 import { IdentityGuard } from './services/ideinty.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -74,6 +75,11 @@ export const routes: Routes = [
     {
         path: 'categoria/:id',
         component: CategoryDetailComponent,
+        canActivate: [IdentityGuard]
+    },
+    {
+        path: 'perfil/:id',
+        component: ProfileComponent,
         canActivate: [IdentityGuard]
     },
 

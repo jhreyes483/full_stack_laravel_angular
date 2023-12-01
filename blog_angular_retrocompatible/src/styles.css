@@ -7,9 +7,23 @@ footer{
     color: lightgray
 }
 
-
 .post-image-edit{
     height: 320px;
     width: 320px;
     overflow: hidden; /* oculta todo lo que sibrepase los 200px */
+}
+
+.avatar_mask_profile{
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 900px;
+}
+
+.avatar_mask_profile img{
+    height: 90px;
+}
+
+.profile{
+
 }

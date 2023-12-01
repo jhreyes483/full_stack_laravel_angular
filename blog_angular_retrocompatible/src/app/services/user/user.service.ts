@@ -2,6 +2,7 @@
 // https://www.youtube.com/watch?v=uv0F1R6Pb0s
 import { Injectable } from '@angular/core';
 import { config } from '../config.services';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -93,6 +94,11 @@ export class UserService {
     return await data.json() ?? [];
   }
 
+  async getPostByUser(user_id : any) : Promise<any>  {
+    let headers = this.headers;
+    return  await  axios.get(this.base_url+ 'api/post/user/' + user_id, { headers });
+  }
+   
 
 
 

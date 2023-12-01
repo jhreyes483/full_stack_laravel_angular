@@ -61,10 +61,7 @@ export class PostNewComponent implements OnInit {
       autofocus: false,
       disableRightClick: false
     };
-
   }
-
-  
 
   ngOnInit(): void {
     this.getCategories();
@@ -101,6 +98,7 @@ export class PostNewComponent implements OnInit {
       if(response.status == 'success'){
         this._router.navigate(['/inicio']);
         this.status = 'success';
+        this.msg    = 'Ha creado el post'; 
       }else{
         this.status = 'error';
         this.msg    = 'No se ha completado el guardado del post'; 
@@ -109,7 +107,6 @@ export class PostNewComponent implements OnInit {
     this.status = 'error';
   });
   }
-
 
   getCategories() {
     this._categoryService.getCategories().then(response => {
