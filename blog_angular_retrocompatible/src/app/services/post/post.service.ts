@@ -22,7 +22,9 @@ export class PostService {
 
 
     async store(post: any) {
-        var options = {
+        //Limpia campo content (editor de textto enriquesido)
+        post.content = config.htmlEntities(post.content)
+        let options = {
             method: 'POST',
             body: JSON.stringify({
                 title: post.title,
@@ -37,14 +39,14 @@ export class PostService {
     }
 
     async getPost(id : any = null) {
-        var url : string = '';
+        let url : string = '';
         if(id){
            url = this.base_url + 'api/post/'+id /* solo el detal */
         }else{
            url = this.base_url + 'api/post' /*todos los post*/
         }
 
-        var options = {
+        let options = {
             method: 'GET',
             headers: this.headers
         }
@@ -53,11 +55,13 @@ export class PostService {
     }
 
     async update(post : any, id: any): Promise<any>  {
+        //Limpia campo content (editor de textto enriquesido)
+        post.content = config.htmlEntities(post.content )
         console.log(this.base_url+ 'post/' + id)
-        var headers = this.headers;
+        let headers = this.headers;
         let data = {
             title: post.title,
-            content: post.content,
+            content:  post.content,
             category_id: post.category_id,
             image: post.image
         }
@@ -66,7 +70,7 @@ export class PostService {
 
 
     async delete(id: any): Promise<any> {
-        var headers = this.headers;
+        let headers = this.headers;
         return await  axios.delete(this.base_url+ 'api/post/'+id, { headers });
     }
 

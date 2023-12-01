@@ -52,10 +52,11 @@ export class PostNewComponent implements OnInit {
     this.froala_options = {
       /** configuracion de formulario texto enrriquesido */
       charCounterCount: true,
-      toolbarButtons:   ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-      toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-      toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-      toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+      lenguaje: 'es',
+      toolbarButtons:   ['bold', 'italic', 'underline', 'paragraphFormat'],
+      toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat'],
+      toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat'],
+      toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat'],
       placeholderText: 'Contenido de el post',
       autofocus: false,
       disableRightClick: false

@@ -76,6 +76,7 @@ export class UserService {
   }
 
   async update(user: any){
+    user.description = config.htmlEntities(user.description)
     var options = {
       method: 'PUT',
       body: JSON.stringify({
