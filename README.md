@@ -22,8 +22,8 @@
 - npm run dev
 
 ### 4. Mombre inicial DB en mongoDB
-- api_rest_node
-- MogoDB Version 1.40.4
+- api_rest_laravel
+- MySQL
 
 ### 5. Host
 - http://localhost:4200/
