@@ -21,7 +21,7 @@
 ### 3. Iniciar proyecto en mode desarrollo
 - npm run dev
 
-### 4. Mombre inicial DB en mongoDB
+### 4. Nombre inicial DB
 - api_rest_laravel
 - MySQL
 
